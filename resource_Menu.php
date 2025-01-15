@@ -25,10 +25,11 @@
                         <div class="producto-card" style="min-width: 300px; flex: 0 0 auto;">
                             <div class="producto-content">
                                 <h2><?php echo htmlspecialchars($producto['nombre']); ?></h2>
+                                <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="Imagen del producto">
                                 <p><?php echo htmlspecialchars($producto['descripcion']); ?></p>
                                 <p class="precio">Precio: $<?php echo htmlspecialchars($producto['precio']); ?></p>
                                 <p class="categoria">Categoría: <?php echo htmlspecialchars($producto['categoria']); ?></p>
-                                <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="Imagen del producto">
+                                
                             </div>
                         </div>
                         <?php
