@@ -22,6 +22,7 @@ class DB {
 				self::$instance = new PDO("mysql:host=".$db_info['db_host'].';port='.$db_info['db_port'].';dbname='.$db_info['db_name'], 
                 $db_info['db_user'], 
                 $db_info['db_pass']);
+				
                 // Configura como se manejan los errores de PDO
 				self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);  
 				self::$instance->query('SET NAMES utf8');

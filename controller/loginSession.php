@@ -11,7 +11,7 @@
         include __DIR__ . '/../views/login_ok.php';
     } else {
         $error = "Usuari o contrasenya incorrectes";
-        include __DIR__ . '';
+        include __DIR__ . '/../views/login_error.php';
     }
 
 
