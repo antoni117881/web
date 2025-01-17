@@ -13,7 +13,7 @@
     <body>
         <div class="Container-Menu"> 
             <h1>PORTADA DE MENU</h1>
-            <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
+            <div class="Oferts" > 
                 <?php
                 require_once 'controller/Pagina_inicio.php';
                 $conection = DB::getInstance();
@@ -22,7 +22,7 @@
                 if ($productos) {
                     foreach ($productos as $producto) {
                         ?>
-                        <div class="producto-card" style="min-width: 300px; flex: 0 0 auto;">
+                        <div class="producto-card" >
                             <div class="producto-content">
                                 <h2><?php echo htmlspecialchars($producto['nombre']); ?></h2>
                                 <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="Imagen del producto">
