@@ -43,7 +43,7 @@
     position: relative !important;
     float: none !important;
     display: block !important;
-    background-color: rgb(135, 0, 253);
+    background-color: rgb(91, 91, 91);
 }
 
 .producto-content {
@@ -69,7 +69,7 @@
 
 .producto-card .precio {
     font-weight: bold;
-    color: #333;
+    color: #000000;
 }
 
 .producto-card .categoria {
@@ -95,4 +95,18 @@
 .Oferts, .producto-card {
     transform: none !important;
     position: relative !important;
+}
+
+.btn-registro {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.btn-registro:hover {
+    background-color: #45a049;
 }

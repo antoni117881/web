@@ -13,22 +13,26 @@
     <body>
         <div class="Container-Menu"> 
             <h1>PORTADA DE MENU</h1>
+            <a href="resource_Register.php" class="btn-registro">Registrarse</a>
+            <a href="resource_LoginSession.php" class="btn-Login">Login</a>
             <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
                 <?php
                 require_once 'controller/Pagina_inicio.php';
                 $conection = DB::getInstance();
                 $productos = ProductosInicio($conection);
                 
-                if ($productos) {
+                if ($productos) {   
                     foreach ($productos as $producto) {
                         ?>
-                        <div class="producto-card" style="min-width: 300px; flex: 0 0 auto;">
+                        <div class="producto-card">
                             <div class="producto-content">
-                                <h2><?php echo htmlspecialchars($producto['nombre']); ?></h2>
-                                <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="Imagen del producto">
-                                <p><?php echo htmlspecialchars($producto['descripcion']); ?></p>
-                                <p class="precio">Precio: $<?php echo htmlspecialchars($producto['precio']); ?></p>
-                                <p class="categoria">Categoría: <?php echo htmlspecialchars($producto['categoria']); ?></p>
+                                <h2><?php echo $producto['nombre']; ?></h2>
+                                <p class="imagen-producto"><?php echo $producto['imagen']; ?></p>
+                                <p class="descripcion"><?php echo $producto['descripcion']; ?></p>
+                                <p class="precio">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
+                                <p class="categoria">Categoría: <?php echo $producto['categoria']; ?></p>
+                                <p class="id_producto">Id Producto: <?php echo $producto['id_producto']; ?></p>
+                                    <a href="resource_ProductView.php?id=<?php echo $producto['id_producto']; ?>" class="btn-Login">Ir a Producto : <?php echo $producto['id_producto']; ?></a>
                                 
                             </div>
                         </div>

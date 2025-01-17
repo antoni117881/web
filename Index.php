@@ -17,6 +17,9 @@ switch ($action){
     case 'SaveRegistre':
             include __DIR__.'/controller/save_registre.php';
             break;
+            case 'Productos':
+                include __DIR__.'/resource_ProductView.php';
+                break;        
 
     default:
         include __DIR__.'/resource_Menu.php';
