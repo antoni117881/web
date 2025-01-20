@@ -1,26 +1,12 @@
 <?php
-require_once 'controller/Pagina_inicio.php';
+require_once __DIR__ . '/controller/porducts.php';
 
 // Obtener el ID del producto
 $id_producto = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Obtener la conexión
-$conection = DB::getInstance();
-
-// Obtener los detalles del producto
-function obtenerProductoPorId($conection, $id) {
-    try {
-        $query = "SELECT * FROM productos WHERE id = :id";
-        $stmt = $conection->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        return false;
-    }
-}
-
-$producto = obtenerProductoPorId($conection, $id_producto);
+// Inicializar el controlador
+$controlador = new ProductViewController();
+$resultado = $controlador->mostrarVistaProducto($id_producto);
 ?>
 
 <!DOCTYPE html>
@@ -31,24 +17,29 @@ $producto = obtenerProductoPorId($conection, $id_producto);
 </head>
 <body>
     <div class="container-producto">
-        <?php if ($producto): ?>
+        <?php if (!$resultado['error']): ?>
+            <?php $producto = $resultado['producto']; ?>
             <div class="producto-detalle">
-                <h1><?php echo $producto['nombre']; ?></h1>
+                <h1><?php echo htmlspecialchars($producto['nombre']); ?></h1>
                 <div class="producto-info">
-                    <img src="imagenes/<?php echo $producto['imagen']; ?>" 
-                         alt="<?php echo $producto['nombre']; ?>"
+                    <img src="imagenes/<?php echo htmlspecialchars($producto['imagen']); ?>" 
+                         alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
                          class="producto-imagen-grande">
                     <div class="detalles">
-                        <p class="descripcion"><?php echo $producto['descripcion']; ?></p>
+                        <p class="descripcion"><?php echo htmlspecialchars($producto['descripcion']); ?></p>
                         <p class="precio">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
-                        <p class="categoria">Categoría: <?php echo $producto['categoria']; ?></p>
+                        <p class="categoria">Categoría: <?php echo htmlspecialchars($producto['categoria']); ?></p>
+                        <p class="id-producto">ID: <?php echo htmlspecialchars($producto['id_producto']); ?></p>
+                        
+                        <!-- Botón para volver al menú -->
+                        <a href="resource_Menu.php" class="btn-volver">Volver al Menú</a>
                     </div>
                 </div>
-                <a href="resource_Menu.php" class="btn-volver">Volver al Menú</a>
             </div>
         <?php else: ?>
-            <div class="error">
-                <p>Producto no encontrado</p>
+            <div class="error-container">
+                <h2>Error</h2>
+                <p><?php echo $resultado['mensaje']; ?></p>
                 <a href="resource_Menu.php" class="btn-volver">Volver al Menú</a>
             </div>
         <?php endif; ?>

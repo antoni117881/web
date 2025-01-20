@@ -19,7 +19,8 @@ switch ($action){
             break;
             case 'Productos':
                 include __DIR__.'/resource_ProductView.php';
-                break;        
+                break;   
+      
 
     default:
         include __DIR__.'/resource_Menu.php';
