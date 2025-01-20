@@ -1,12 +1,21 @@
 
-    <html>
-        <head></head>
-        <body>
-            <div>
-                <div> <h1> REGISTRO COMPLETADO</h1></div>
 
+<html>
+    <head>
+        <title>Registro Completado</title>
+    </head>
+    <body>
+        <div>
+            <div> 
+                <h1>
+                <?php 
+               
+                    echo $_SESSION['ValidatedRegistre'];
+                
+                ?>
+                </h1>
             </div>
-
-        </body>
-    </html>
+        </div>
+    </body>
+</html>
 

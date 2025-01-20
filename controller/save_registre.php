@@ -17,7 +17,7 @@ if (empty($_POST['nameAccount'])) {
 
 if (empty($_POST['password'])) {
     $mensajeError[] = "El campo Contraseña no puede estar vacío.";
-} elseif (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 16) {
+} elseif (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 12) {
     $mensajeError[] = "La contraseña debe tener entre 8 y 16 caracteres.";
 } else {
     $_SESSION['password'] = $_POST['password'];
@@ -49,7 +49,7 @@ if (empty($_POST['email'])) {
 
 if (empty($_POST['address'])) {
     $mensajeError[] = "El campo Dirección no puede estar vacío.";
-} elseif (strlen($_POST['address']) < 8 || strlen($_POST['address']) > 12) {
+} elseif (strlen($_POST['address']) < 8 || strlen($_POST['address']) > 16) {
     $mensajeError[] = "La direccion debe tener entre 8 y 12 caracteres.";
 } else {
     $_SESSION['address'] = $_POST['address'];
@@ -57,8 +57,8 @@ if (empty($_POST['address'])) {
 
 if (empty($_POST['phone'])) {
     $mensajeError[] = "El campo Número Móvil no puede estar vacío.";
-} elseif (strlen($_POST['phone']) != 10 || !ctype_digit($_POST['phone'])) {
-    $mensajeError[] = "El número de teléfono debe tener exactamente 10 dígitos.";
+} elseif (strlen($_POST['phone']) !== 9 ) {
+    $mensajeError[] = "El número de teléfono debe tener exactamente 9 dígitos.";
 } else {
     $_SESSION['phone'] = $_POST['phone'];
 }
@@ -96,9 +96,10 @@ $registre = registrar(
 
 
 if ($registre) {
-    $confirmacionRegistre ="Registrado correctamente.";
+    $confirmacionRegistre ="Registrado correctamente";
     $_SESSION['ValidatedRegistre'] = $confirmacionRegistre;
     include __DIR__ . '/../view/registreCompleted.php';
-    ;
+    
+    
 }
 ?>

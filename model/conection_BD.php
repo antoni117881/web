@@ -36,6 +36,7 @@ class DB {
 		// Si ya existe una instancia, simplemente la devuelve. Si no, devuelve la nueva conexion creada.
 
 		return self::$instance;
+		
 	}
 
 }

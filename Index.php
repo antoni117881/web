@@ -1,30 +1,29 @@
+
 <?php
-
+// index.php
 session_start();
-$action = $_GET['action'] ?? null; 
 
-switch ($action){
+$action = $_GET['action'] ?? null; //es mas robusta ?? si es null 
 
-    // USERS
+switch ($action) { //aqui solo apuntamos a controladores y resource no a modulos
+    // Default
     case 'LoginUser':
         include __DIR__.'/resource_LoginSession.php';
         break;
         
-    case 'RegistreUsuario':
-            include __DIR__.'/resource_Register.php';
-            break;
-    
-    case 'SaveRegistre':
+    case 'Registro':
+        include __DIR__.'/resource_Register.php';
+        break;
+    case 'RegistreSave':
             include __DIR__.'/controller/save_registre.php';
             break;
-            case 'Productos':
+    
+    case 'Productos':
                 include __DIR__.'/resource_ProductView.php';
                 break;        
 
     default:
         include __DIR__.'/resource_Menu.php';
         break;
-
-}
-
+    }
 ?>
