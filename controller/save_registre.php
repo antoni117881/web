@@ -9,8 +9,8 @@ $mensajeError = [];
 // Validar campos y guardar datos de usuario
 if (empty($_POST['nameAccount'])) {
     $mensajeError[] = "El campo Nombre de Usuario no puede estar vacío.";
-} elseif (strlen($_POST['nameAccount']) < 8 || strlen($_POST['nameAccount']) > 12) {
-    $mensajeError[] = "El nombre de la cuenta debe tener entre 8 y 12 caracteres.";
+} elseif (strlen($_POST['nameAccount']) < 4 || strlen($_POST['nameAccount']) > 12) {
+    $mensajeError[] = "El nombre de la cuenta debe tener entre 4 y 12 caracteres.";
 } else {
     $_SESSION['nameAccount'] = $_POST['nameAccount'];
 }
