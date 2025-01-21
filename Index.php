@@ -20,7 +20,8 @@ switch ($action) { //aqui solo apuntamos a controladores y resource no a modulos
     
     case 'Productos':
                 include __DIR__.'/resource_ProductView.php';
-                break;        
+                break;   
+      
 
     default:
         include __DIR__.'/resource_Menu.php';
