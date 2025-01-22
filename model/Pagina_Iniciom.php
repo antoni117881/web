@@ -1,12 +1,4 @@
 <?php
-// Funcion para mostrar los productos de inicio
-function ProductosInicio($conection)   {    
-    $consulta_productos = $conection->prepare("SELECT DISTINCT * FROM productos");
-    $consulta_productos->execute();
-    $resultados = $consulta_productos->fetchAll(PDO::FETCH_ASSOC);
-    return $resultados;
-}
-
 class ProductoModelo {
     private $db;
     
@@ -25,7 +17,6 @@ class ProductoModelo {
         }
     }
 
-    // Método nuevo para obtener un producto específico
     public function obtenerProductoPorId($id) {
         try {
             $consulta = $this->db->prepare("SELECT * FROM productos WHERE id_producto = :id");
@@ -37,4 +28,11 @@ class ProductoModelo {
             return false;
         }
     }
+}
+
+// Función para mostrar los productos de inicio
+function ProductosInicio($conection) {    
+    $consulta_productos = $conection->prepare("SELECT DISTINCT * FROM productos");
+    $consulta_productos->execute();
+    return $consulta_productos->fetchAll(PDO::FETCH_ASSOC);
 }

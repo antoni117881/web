@@ -17,6 +17,7 @@
             <a href="resource_LoginSession.php" class="btn-Login">Login</a>
             <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
                 <?php
+                require_once 'controller/porducts.php';
                 require_once 'controller/Pagina_inicio.php';
                 $conection = DB::getInstance();
                 $productos = ProductosInicio($conection);
@@ -32,8 +33,7 @@
                                 <p class="precio">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
                                 <p class="categoria">Categoría: <?php echo $producto['categoria']; ?></p>
                                 <p class="id_producto">Id Producto: <?php echo $producto['id_producto']; ?></p>
-                                    <a href="resource_ProductView.php?id=<?php echo $producto['id_producto']; ?>" class="btn-Login">Ir a Producto : <?php echo $producto['id_producto']; ?></a>
-                                
+                                <a href="resource_ProductView.php?id=<?php echo $producto['id_producto']; ?>" class="btn-Login">Ir a Producto : <?php echo $producto['id_producto']; ?></a>
                             </div>
                         </div>
                         <?php
