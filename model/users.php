@@ -2,14 +2,16 @@
 
 
 function registrar(
-    $conection,
-    $nameAccount,
-    $password,
-    $first_name,
+    $conection, 
+    $nameAccount, 
+    $password, 
+    $first_name, 
     $last_name,
-    $email,
-    $address,
-    $phone
+    $email, 
+    $address, 
+    $phone,
+    $question,
+    $response
 ) {
     try {
         // Inicia una transacción
@@ -23,8 +25,10 @@ function registrar(
                 apellido, 
                 email, 
                 direccion,
-                telefono
-            ) VALUES (?, ?, ?, ?, ?, ?, ?)"
+                telefono,
+                pregunta,
+                respuesta
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
 
         $consult_dataUser->bindParam(1, $nameAccount, PDO::PARAM_STR);
@@ -34,6 +38,8 @@ function registrar(
         $consult_dataUser->bindParam(5, $email, PDO::PARAM_STR);
         $consult_dataUser->bindParam(6, $address, PDO::PARAM_STR);
         $consult_dataUser->bindParam(7, $phone, PDO::PARAM_STR);
+        $consult_dataUser->bindParam(8, $question, PDO::PARAM_STR);
+        $consult_dataUser->bindParam(9, $response, PDO::PARAM_STR);
 
         $consult_dataUser->execute();
 
@@ -84,6 +90,15 @@ function login(
 
 }
 
+function validarLogin(
+   
+){
+}
+
+function ReinciarContraseña(
+   
+    ){
+    }
 
 
 ?>
