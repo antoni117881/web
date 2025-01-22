@@ -13,8 +13,8 @@
     <body>
         <div class="Container-Menu"> 
             <h1>PORTADA DE MENU</h1>
-            <a href="resource_Register.php" class="btn-registro">Registrarse</a>
-            <a href="resource_LoginSession.php" class="btn-Login">Login</a>
+            <a href="?action=Registro" class="btn-registro">Registrarse</a>
+            <a href="?action=LoginUser" class="btn-Login">Login</a>
             <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
                 <?php
                 
