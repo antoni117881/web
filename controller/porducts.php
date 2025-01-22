@@ -1,5 +1,6 @@
 <?php
-require_once '/model/Producto.php';
+require_once __DIR__ . '/../model/Pagina_Iniciom.php';
+require_once __DIR__ . '/../model/conection_BD.php';
 
 class ProductViewController {
     private $modelo;

@@ -17,6 +17,7 @@
             <a href="resource_LoginSession.php" class="btn-Login">Login</a>
             <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
                 <?php
+                
                 require_once 'controller/porducts.php';
                 require_once 'controller/Pagina_inicio.php';
                 $conection = DB::getInstance();
