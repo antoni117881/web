@@ -7,24 +7,26 @@
 
 <body>
     <div> CABECERA</div>
-
+    </br> 
     <div>  <h1>Iniciar Session  </h1>  
 
     </div>
     
     <div class="Form_Login">
-        <form action="?action=controller_LoginSession" method="post">
-            <label for="username">Name User </label>
-            <input type="text" id="userName" name="userName" required>
+        <form action="?action=LoginController" method="post">
+            
+            <label for="nameAccount">Name User </label>
+            <input type="text" id="nameAccount" name="nameAccount" maxlength="12" required>
         </br>
             <label for="password">Password: </label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" maxlength="12" name="password"required>
+       
         </br>
-            <label for="email">mail:  </label>
-            <input type="text" id="mail" name="mail" >
+        <input type="submit" value="Iniciar Session">
         </form>
 
-    </div>   
+    </div>  
+    </br> 
     <footer>
         Footer
     </footer>

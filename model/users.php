@@ -1,5 +1,6 @@
 <?php
 
+
 function registrar(
     $conection,
     $nameAccount,
@@ -47,6 +48,40 @@ function registrar(
         error_log("Error en registro: " . $e->getMessage());
         return false;
     }
+}
+
+// funcion de logear 
+
+function login(
+    $conection,
+    $nameAccount,
+    $password
+){
+    try{
+        $consult_dataUser =  $conection->prepare("SELECT contraseña FROM usuarios WHERE nombre_cuenta = ?");
+        $consult_dataUser->bindParam(1,$nameAccount, PDO::PARAM_STR);
+        $consult_dataUser->execute();
+        $resultat_graus = $consult_dataUser->fetchAll(PDO::FETCH_ASSOC);
+
+
+        $nameAccount = $_POST['nameAccount'] ?? null; // Verifica si el índice existe
+        if (!$nameAccount) {
+            die("Error: El nombre de la cuenta no se proporcionó.");
+        }
+        
+        if (password_verify($password, $resultat_graus[0]['contraseña'])) {
+            return true;
+        } else {
+            return false;
+        }
+        
+
+    }catch(PDOException $e){
+        echo "Error: " . $e->getMessage();
+    }
+
+    return false;
+
 }
 
 ?>
