@@ -22,8 +22,10 @@
             <input type="password" id="password" maxlength="12" name="password"required>
        
         </br>
-        <input type="submit" value="Iniciar Session">
+        <input type="submit" value="Iniciar Session"></br>
+        <a href="?action=NewPassword" class="btn" >Restaurar Contraseña</a>
         </form>
+        
 
     </div>  
     </br> 
