@@ -39,18 +39,14 @@ if (empty($_POST['first_name'])) {
     $_SESSION['first_name'] = $_POST['first_name'];
 }
 
-if (empty($_POST['email'])) {
-    $mensajeError[] = "El campo Mail no puede estar vacío.";
-} elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $mensajeError[] = "El correo electronico debe tener un formato valido: Ejemplo..@gmail.com";
 } else {
     $_SESSION['email'] = $_POST['email'];
 }
 
-if (empty($_POST['address'])) {
-    $mensajeError[] = "El campo Dirección no puede estar vacío.";
-} elseif (strlen($_POST['address']) < 8 || strlen($_POST['address']) > 16) {
-    $mensajeError[] = "La direccion debe tener entre 8 y 12 caracteres.";
+if (strlen($_POST['address']) < 8 || strlen($_POST['address']) > 16) {
+    $mensajeError[] = "La direccion debe tener entre 8 y 16 caracteres.";
 } else {
     $_SESSION['address'] = $_POST['address'];
 }
@@ -62,6 +58,22 @@ if (empty($_POST['phone'])) {
 } else {
     $_SESSION['phone'] = $_POST['phone'];
 }
+
+if (empty($_POST['questionList'])) {
+    $mensajeError[] = "Tiene que elegir una pregunta";
+}else {
+    $_SESSION['questionList'] = $_POST['questionList'];
+}
+
+if (empty($_POST['response'])) {
+    $mensajeError[] = "Tienes que rellenar el campo de Respuesta";
+} elseif (strlen($_POST['response']) > 8 ) {
+    $mensajeError[] = "Solo puede introducir 8 caracteres";
+} else {
+    $_SESSION['response'] = $_POST['response'];
+}
+
+
 
 // Mnadar erores encontrado a la view
 if (!empty($mensajeError)) {
@@ -80,6 +92,8 @@ $last_name = $_SESSION['last_name'];
 $email = $_SESSION['email'];
 $address = $_SESSION['address'];
 $phone = $_SESSION['phone'];
+$question = $_SESSION['questionList'];
+$response = $_SESSION['response'];
 
 $conection = DB::getInstance();
 
@@ -91,15 +105,19 @@ $registre = registrar(
     $last_name,
     $email, 
     $address, 
-    $phone
+    $phone,
+    $question,
+    $response
 );
 
 
 if ($registre) {
     $confirmacionRegistre ="Registrado correctamente";
     $_SESSION['ValidatedRegistre'] = $confirmacionRegistre;
-    include __DIR__ . '/../view/registreCompleted.php';
-    
-    
+    // include __DIR__.'/resource_Menu.php';
+    include __DIR__ . '/../resource_Menu.php';  
 }
+
+
+
 ?>

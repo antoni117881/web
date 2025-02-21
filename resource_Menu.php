@@ -11,13 +11,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+
+        <div class="header">
+            <?php
+            include __DIR__. "/view/header.php";
+            ?>
+        </div>
         <div class="Container-Menu"> 
             <h1>PORTADA DE MENU</h1>
-            <a href="?action=Registro" class="btn-registro">Registrarse</a>
-            <a href="?action=LoginUser" class="btn-Login">Login</a>
             <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
                 <?php
-                
                 require_once 'controller/porducts.php';
                 require_once 'controller/Pagina_inicio.php';
                 

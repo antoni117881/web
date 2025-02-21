@@ -6,7 +6,11 @@
 </head>
 
 <body>
-    <div> CABECERA</div>
+    <div>
+    <?php
+    include __DIR__. "/view/header.php";
+    ?>
+    </div>
     </br> 
     <div>  <h1>Iniciar Session  </h1>  
 
@@ -23,8 +27,13 @@
        
         </br>
         <input type="submit" value="Iniciar Session"></br>
-        <a href="?action=NewPassword" class="btn" >Restaurar Contraseña</a>
+        
         </form>
+        <div >
+            <a href="?action=NewPassword" class="btn" >Restaurar Contraseña</a>
+            <a href="?action=Registro" class="btn-Login">Crear Cuenta</a>
+        </div>
+        
         
 
     </div>  
