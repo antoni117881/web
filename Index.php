@@ -34,9 +34,12 @@ switch ($action) { //aqui solo apuntamos a controladores y resource no a modulos
             include __DIR__.'/controller/loginSession.php';
             break;
     
-    case 'Productos':
+     case 'Producto':
             include __DIR__.'/resource_ProductView.php';
-            break;  
+            break;
+    case 'ProductosGeneral':
+            include __DIR__.'/RegistroProductos.php';
+             break;   
 
     case 'NewPassword':
         include __DIR__.'/resource_ResetPassword.php';
