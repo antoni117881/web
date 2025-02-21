@@ -32,7 +32,7 @@ $resultado = $controlador->mostrarVistaProducto($id_producto);
                         <p class="id-producto">ID: <?php echo htmlspecialchars($producto['id_producto']); ?></p>
                         
                         <!-- Botón para volver al menú -->
-                        <a href="resource_Menu.php" class="btn-volver">Volver al Menú</a>
+                        <a href="?action=" class="btn-volver">Volver al Menú</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ $resultado = $controlador->mostrarVistaProducto($id_producto);
             <div class="error-container">
                 <h2>Error</h2>
                 <p><?php echo $resultado['mensaje']; ?></p>
-                <a href="resource_Menu.php" class="btn-volver">Volver al Menú</a>
+                <a href="?action=" class="btn-volver">Volver al Menú</a>
             </div>
         <?php endif; ?>
     </div>

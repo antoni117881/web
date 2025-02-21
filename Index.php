@@ -27,7 +27,8 @@ switch ($action) { //aqui solo apuntamos a controladores y resource no a modulos
 
     case 'NewPassword':
         include __DIR__.'/resource_ResetPassword.php';
-        break;   
+        break;  
+
                 
 
     default:
