@@ -95,6 +95,13 @@ function validarLogin(
 ){
 }
 
+function salirLogin(
+    $loginActive
+    ){
+        $loginActive = false;
+        
+}
+
 function ReinciarContraseña(
    
     ){

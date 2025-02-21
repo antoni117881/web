@@ -18,11 +18,14 @@
     if($conection_ok) {
         $_SESSION["nameAccount"] = $_POST["nameAccount"];
         include __DIR__. '/../resource_Menu.php';
-        $sesion_ok = true;
+       $sesion_ok = true;
+       $_SESSION["SesionStart"] = $sesion_ok;
+
     }else {
         $error = "Usuari o contrasenya incorrectes";
         include __DIR__ . '/../view/login_error.php';
         $sesion_ok= false;
+        $_SESSION["SesionStart"] = $sesion_ok;
     }
 
 
