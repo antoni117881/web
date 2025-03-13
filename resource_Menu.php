@@ -12,9 +12,11 @@
     </head>
     <body>
 
-        <div class="header">
+        <div class="header" style="background:grey">
+           <strong> HEADER DESDE VIEW/HEADER.PHP </strong>
             <?php
-            include __DIR__. "/view/header.php";
+            include __DIR__. "./view/header.php";
+            
             ?>
         </div>
         <div class="Container-Menu"> 

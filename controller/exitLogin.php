@@ -1,10 +1,11 @@
 <?php
-require_once __DIR__. '/../model/conection_BD.php';
-require_once __DIR__. '/../model/users.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+session_unset(); // Elimina todas las variables de sesión
+session_destroy(); // Destruye la sesión
 
-
-$_SESSION["SesionStart"] = true;
-session_destroy();
-header('Location: ../index.php');
+// Redirige al login
+include __DIR__ . '/../resource_Menu.php';
 exit();
 ?>

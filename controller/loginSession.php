@@ -4,10 +4,9 @@
     
     $sesion_ok = false;
     $conection = DB::getInstance();
-
+    
     if(empty($_POST['nameAccount'])||empty($_POST['password']) ){
         $sesion_ok = false;
-
     }
     $conection_ok = login(
         $conection, 
@@ -19,7 +18,7 @@
         $_SESSION["nameAccount"] = $_POST["nameAccount"];
         include __DIR__. '/../resource_Menu.php';
        $sesion_ok = true;
-       $_SESSION["SesionStart"] = $sesion_ok;
+       $_SESSION["SesionStart"] = true;
 
     }else {
         $error = "Usuari o contrasenya incorrectes";

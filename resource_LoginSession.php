@@ -33,8 +33,6 @@
             <a href="?action=NewPassword" class="btn" >Restaurar Contraseña</a>
             <a href="?action=Registro" class="btn-Login">Crear Cuenta</a>
         </div>
-        
-        
 
     </div>  
     </br> 

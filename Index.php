@@ -45,6 +45,10 @@ switch ($action) { //aqui solo apuntamos a controladores y resource no a modulos
         include __DIR__.'/resource_ResetPassword.php';
         break;  
 
+    case 'exitLogin':
+        include __DIR__.'./controller/exitLogin.php';
+        break;
+
                 
 
     default:

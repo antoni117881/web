@@ -1,0 +1,19 @@
+{
+    "name": "luisi/web",
+    "autoload": {
+        "psr-4": {
+            "Luisi\\Web\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "LuisBYE",
+            "email": "luis_alexissanchez@ceroca.cat"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true
+        }
+    }
+}
