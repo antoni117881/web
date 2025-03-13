@@ -58,74 +58,40 @@ function registrar(
 
 // funcion de logear 
 
-function login(
-    $conection,
-    $nameAccount,
-    $password
-){
-    try{
-        $consult_dataUser =  $conection->prepare("SELECT contraseña FROM usuarios WHERE nombre_cuenta = ?");
-        $consult_dataUser->bindParam(1,$nameAccount, PDO::PARAM_STR);
+function login($conection, $nameAccount, $password) {
+    try {
+        // Consulta para obtener la contraseña y el rol del usuario
+        $consult_dataUser = $conection->prepare("SELECT contraseña, rol FROM usuarios WHERE nombre_cuenta = ?");
+        $consult_dataUser->bindParam(1, $nameAccount, PDO::PARAM_STR);
         $consult_dataUser->execute();
-        $resultat_graus = $consult_dataUser->fetchAll(PDO::FETCH_ASSOC);
+        $result = $consult_dataUser->fetch(PDO::FETCH_ASSOC); // Solo necesitamos una fila
 
-
-        $nameAccount = $_POST['nameAccount'] ?? null; // Verifica si el índice existe
-        if (!$nameAccount) {
-            die("Error: El nombre de la cuenta no se proporcionó.");
+        // Si el usuario no existe
+        if (!$result) {
+            return false;
         }
+
         
-        if (password_verify($password, $resultat_graus[0]['contraseña'])) {
-            return true;
+        // Verificar la contraseña
+        if (password_verify($password, $result['contraseña'])) {
+            return $rol = $result['rol']; // Devuelve el rol del usuario si la autenticación es correcta
         } else {
             return false;
         }
-        
 
-    }catch(PDOException $e){
+    } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 
     return false;
-
 }
+
 
 function validarLogin(
    
 ){
 }
 
-// function salirLogin(
-//     $conection,
-//     $nameAccount,
-//     $password
-//     ){
-//         try{
-//             $consult_dataUser =  $conection->prepare("SELECT contraseña FROM usuarios WHERE nombre_cuenta = ?");
-//             $consult_dataUser->bindParam(1,$nameAccount, PDO::PARAM_STR);
-//             $consult_dataUser->execute();
-//             $resultat_graus = $consult_dataUser->fetchAll(PDO::FETCH_ASSOC);
-    
-    
-//             $nameAccount = $_POST['nameAccount'] ?? null; // Verifica si el índice existe
-//             if (!$nameAccount) {
-//                 die("Error: El nombre de la cuenta no se proporcionó.");
-//             }
-            
-//             if (password_verify($password, $resultat_graus[0]['contraseña'])) {
-//                 return true;
-//             } else {
-//                 return false;
-//             }
-            
-    
-//         }catch(PDOException $e){
-//             echo "Error: " . $e->getMessage();
-//         }
-    
-//         return false;
-    
-// }
 
 function ReinciarContraseña(
    
