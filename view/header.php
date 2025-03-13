@@ -20,6 +20,16 @@
         <a href="?action=exitLogin" class="btn">Salir de session</a>
         <a href="?action=ProductosGeneral" class="btn">Productos</a>
     <?php } ?>
+    <div>
+        <?php 
+        if ($_SESSION['rol'] === "admin") { ?>
+
+            <a href="?action=AdminAddProduct" class="btn">Añadir Producto</a>
+        <?php  echo "Eres admin"; }
+        
+        ?>
+    </div>
+    
 
     </div>
     </body>
