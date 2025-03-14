@@ -22,6 +22,16 @@
         <a href="?action=ProductosGeneral" class="btn">Productos</a>
         <a href="resource_cesta.php" class="btn">Ver Cesta</a>
     <?php } ?>
+    <div>
+        <?php 
+        if ($_SESSION['rol'] === "admin") { ?>
+
+            <a href="?action=AdminAddProduct" class="btn">Añadir Producto</a>
+        <?php  echo "Eres admin"; }
+        
+        ?>
+    </div>
+    
 
     </div>
     </body>
