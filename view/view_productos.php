@@ -15,6 +15,10 @@
                                 <p class="categoria">Categoría: <?php echo $producto['categoria']; ?></p>
                                 <p class="id_producto">Id Producto: <?php echo $producto['id_producto']; ?></p>
                                 <a href="?action=Producto&id=<?php echo $producto['id_producto']; ?>" class="btn-Login">Ir a Producto : <?php echo $producto['id_producto']; ?></a>
+                                <form method="get" action="?action=cesta">
+                                    <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']; ?>">
+                                    <button type="submit" class="btn-Agregar">Agregar a la Cesta</button>
+                                </form>
                             </div>
                         </div>
                         <?php

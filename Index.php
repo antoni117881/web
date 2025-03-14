@@ -1,11 +1,11 @@
-
 <?php
 // index.php
 session_start();
 
-$action = $_GET['action'] ?? null; //es mas robusta ?? si es null 
+// Inicializar la variable $action
+$action = isset($_GET['action']) ? $_GET['action'] : 'default'; // Valor predeterminado
 
-switch ($action) { //aqui solo apuntamos a controladores y resource no a modulos
+switch ($action) { //aquí solo apuntamos a controladores y resource no a modulos
     
     // Resource
     case 'LoginUser':
@@ -48,6 +48,9 @@ switch ($action) { //aqui solo apuntamos a controladores y resource no a modulos
     case 'exitLogin':
         include __DIR__.'./controller/exitLogin.php';
         break;
+    case 'cesta':
+        include __DIR__.'/resource_cesta.php';
+         break;
 
                 
 

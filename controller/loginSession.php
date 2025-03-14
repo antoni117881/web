@@ -21,6 +21,7 @@
        $_SESSION["SesionStart"] = true;
 
     }else {
+        echo $conection_ok;
         $error = "Usuari o contrasenya incorrectes";
         include __DIR__ . '/../view/login_error.php';
         $sesion_ok= false;
