@@ -6,13 +6,14 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg,rgb(95, 168, 188),rgb(96, 110, 171));
+            
+        }
+        .Container-Menu{
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            height: 70vh;
         }
-
         .form-container {
             background: white;
             padding: 25px;
@@ -76,6 +77,12 @@
 </head>
 
 <body>
+    <div class="">
+            <?php
+            include __DIR__. "./header.php";
+            ?>
+   </div>
+   <div class="Container-Menu">
     <div class="form-container">
         <h2>Añadir Nuevo Producto</h2>
         <form action="?action=SaveProducts" method="post">
@@ -97,5 +104,6 @@
             <button type="submit">Añadir Producto</button>
         </form>
     </div>
+   </div>
 </body>
 </html>

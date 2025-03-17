@@ -1,31 +1,24 @@
-<?php
-require_once __DIR__ . '/../model/Pagina_Iniciom.php';
-require_once __DIR__ . '/../model/conection_BD.php';
+<?php 
+    require_once __DIR__ . '/../model/Producto_M.php';
+    require_once __DIR__ . '/../model/conection_BD.php';
 
-class ProductViewController {
-    private $modelo;
-    private $db;
+    $mensajeError = [];
+   
+        $_SESSION['productName'] = $_POST['productName'];
+        $_SESSION['productDescription'] = $_POST['productDescription'];
+        $_SESSION['productPrice'] = $_POST['productPrice']; 
+        $_SESSION['productStock'] = $_POST['productStock'];
+        $_SESSION['productImage'] = $_POST['productImage'];
 
-    public function __construct() {
-        $this->db = DB::getInstance();
-        $this->modelo = new ProductoModelo($this->db);
-    }   
-    
-    public function guardarProducto($nombre, $descripcion, $precio, $stock) {
-        $producto = $this->modelo->guardarProducto($nombre, $descripcion, $precio, $stock);
-    
-        if (!$producto) {
-            return [
-                'error' => true,
-                'mensaje' => 'Producto no guardado'
-            ];
+        $producto = new ProductViewController();
+        
+        $producto->guardarProducto($_SESSION['productName'], $_SESSION['productDescription'], $_SESSION['productPrice'], $_SESSION['productStock'], $_SESSION['productImage']);
+        if($producto){
+            echo "Producto guardado correctamente";
+            include __DIR__ . '/../resource_Menu.php';
+        }else{
+            echo "Error al guardar el producto";
         }
 
-        return [
-            'error' => false,
-            'producto' => $producto
-        ];  
-    }
 
-
-}
+?>

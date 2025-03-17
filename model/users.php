@@ -69,6 +69,7 @@ function login($conection, $nameAccount, $password) {
         if (!$result) {
             return false;
         }
+        
         // Verificar la contraseña
         if (password_verify($password, $result['contraseña'])) {
             $_SESSION["rol"] = $result['rol']; // Asigna el rol a la sesión

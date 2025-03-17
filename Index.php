@@ -26,6 +26,9 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
     case 'NewPassword':
             include __DIR__.'/resource_ResetPassword.php';
             break;  
+    case 'Producto':
+        include __DIR__.'/resource_ProductView.php';
+        break;
     // Controller 
     case 'RegistreSave':
             include __DIR__.'/controller/save_registre.php';
@@ -36,20 +39,18 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
     case 'LoginController':
             include __DIR__.'/controller/loginSession.php';
             break;
-    
-     case 'Producto':
-            include __DIR__.'/resource_ProductView.php';
-            break;
     case 'ProductosGeneral':
             include __DIR__.'/RegistroProductos.php';
              break;   
-
     case 'exitLogin':
         include __DIR__.'/controller/exitLogin.php';
         break;
     case 'cesta':
-        include __DIR__.'/resource_cesta.php';
+        include __DIR__.'/view/vista_cesta.php';
          break;
+    case 'SaveProducts':
+        include __DIR__.'/controller/guardar_producto.php';
+        break;
 
     // View 
     case 'AdminAddProduct':

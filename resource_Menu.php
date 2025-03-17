@@ -11,17 +11,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-
-        <div class="header" style="background:grey">
-           <strong> HEADER DESDE VIEW/HEADER.PHP </strong>
+        <div class="">
             <?php
             include __DIR__. "/view/header.php";
             ?>
         </div>
         <div class="Container-Menu"> 
-            <h1>PORTADA DE MENU</h1>
+            <h1>Productos en Oferta</h1>
             
-            <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
+            <div class="Oferts" > 
             <?php include 'view/view_productos.php'; ?>
             </div>   
         </div>

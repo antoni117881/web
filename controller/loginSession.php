@@ -16,6 +16,7 @@
 
     if($conection_ok) {
         $_SESSION["nameAccount"] = $_POST["nameAccount"];
+        echo "redirigiendo a la pagina principal";
         include __DIR__. '/../resource_Menu.php';
        $sesion_ok = true;
        $_SESSION["SesionStart"] = true;
