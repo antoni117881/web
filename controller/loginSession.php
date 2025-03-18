@@ -26,7 +26,7 @@
         $error = "Usuari o contrasenya incorrectes";
         include __DIR__ . '/../view/login_error.php';
         $sesion_ok= false;
-        $_SESSION["SesionStart"] = $sesion_ok;
+        $_SESSION["SesionStart"] = false;
     }
 
 

@@ -1,36 +1,41 @@
+
 <div class="header">
-    <h2 class="site-title" > <a href="?action=">Super Suela </a></h2>
+    <h2 class="site-title">
+        <a href="?action=home">Super Suela</a>
+    </h2>
     <nav class="nav-links">
         <?php 
-        $sesion_Start = (!isset ($_SESSION["SesionStart"])) ? null : $_SESSION["SesionStart"];
-        if (!isset($sesion_Start) || $sesion_Start === null) {
+        $sesion_Start = $_SESSION["SesionStart"] ?? null;
+        
+        if (!isset($_SESSION['rol']) && $sesion_Start === null) {
+            
             $sesion_Start = false;
         } else {
             $sesion_Start = true;
         }
 
-        if ($sesion_Start === false) { 
-            echo $sesion_Start
-        ?>
+        if ($sesion_Start === false) { ?>
             <a href="?action=Registro" class="btn-registro">Registrarse</a>
             <a href="?action=LoginUser" class="btn-link">Login</a>
             <a href="?action=cesta" class="btn-link">Ver Cesta</a>
-        <?php } else if( isset($_SESSION['rol']) && $_SESSION['rol'] === "admin" && $sesion_Start===true ) { ?>
-            <p class="welcome-message">Bienvenido, <?php echo $_SESSION["nameAccount"]; ?></p>
+        <?php } else { ?>
+            <p class="welcome-message">Bienvenido, <?php echo $_SESSION["nameAccount"] ?? "Usuario"; ?></p>
             <a href="?action=exitLogin" class="btn-link">Salir</a>
             <a href="?action=ProductosGeneral" class="btn-link">Productos</a>
             <a href="?action=cesta" class="btn-link">Ver Cesta</a>
-        <?php } ?>
-        
-        <?php 
-        if (isset($_SESSION['rol']) && $_SESSION['rol'] === "admin") { ?>
-            <a href="?action=AdminAddProduct" class="btn-link">Añadir Producto</a>
-            <p class="admin-message">Eres admin</p>
+
+            <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === "admin") { ?>
+                <a href="?action=AdminAddProduct" class="btn-link">Panel de Administrador</a>
+                <p class="admin-message">Eres admin</p>
+            <?php } else{ ?>
+                <p class="admin-message">Eres Cliente</p>
+                <?php } ?>
+
         <?php } ?>
     </nav>
 </div>
 
-<style jsx>
+<style>
     .header {
         display: flex;
         justify-content: space-between;
@@ -55,7 +60,8 @@
 
     .nav-links a {
         text-decoration: none;
-        color:rgb(255, 255, 255);
+        background-color: #2B6CB0;
+        color: rgb(255, 255, 255);
         font-weight: 500;
         padding: 0.5rem 1rem;
         border-radius: 8px;
@@ -63,7 +69,7 @@
     }
 
     .nav-links a:hover {
-        background-color: #2B6CB0;
+        background-color:rgb(135, 185, 239);
         color: white;
     }
 
