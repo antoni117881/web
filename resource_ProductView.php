@@ -5,8 +5,9 @@ require_once __DIR__ . '/controller/porducts.php';
 $id_producto = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 // Inicializar el controlador
-$controlador = new ProductViewController();
-$resultado = $controlador->mostrarVistaProducto($id_producto);
+$controlador = new ProductController();
+$resultado = $controlador->mostrarVistaProducto($id_producto); // Asegúrate de obtener el resultado
+
 ?>
 
 <!DOCTYPE html>

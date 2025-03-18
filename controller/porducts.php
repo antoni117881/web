@@ -30,9 +30,15 @@ class ProductController {
             'producto' => $producto
         ];
     }
+    
 
     // Método para generar el botón en el listado de productos
     public function generarBotonProducto($id_producto) {
+        $id_producto = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+// Inicializar el controlador
+         $controlador = new ProductoModelo();
+        $resultado = $controlador->mostrarVistaProducto($id_producto);
         return sprintf(
             '<a href="resource_ProductView.php?id=%d" class="btn-producto">
                 Ver Producto #%d
