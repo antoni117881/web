@@ -14,9 +14,13 @@
    </div>
     <h1>Cesta de Compras</h1>
     <ul>
-        <?php foreach ($this->cesta->getProductos() as $producto): ?>
-            <li><?php echo htmlspecialchars($producto['nombre']); ?> - Precio: $<?php echo number_format($producto['precio'], 2); ?></li>
-        <?php endforeach; ?>
+        <?php if (isset($productos) && !empty($productos)): ?>
+            <?php foreach ($productos as $producto): ?>
+                <li><?php echo htmlspecialchars($producto['nombre']); ?> - Precio: $<?php echo number_format($producto['precio'], 2); ?></li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <li>No hay productos en la cesta.</li>
+        <?php endif; ?>
     </ul>
 </body>
 </html>

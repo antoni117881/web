@@ -21,8 +21,10 @@
             
             <div class="Oferts" > 
             <?php include 'view/view_productos.php'; ?>
+           
             </div>   
         </div>
+        
     </body>
 </html>
 <?php
