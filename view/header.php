@@ -27,9 +27,9 @@
         if ($_SESSION['rol'] === "admin") { ?>
 
             <a href="?action=AdminAddProduct" class="btn">Añadir Producto</a>
-        <?php  echo "Eres admin"; }
+        <?php  echo "Eres admin"; }else if($_SESSION['rol'] === "cliente")
         
-        ?>
+        ?>  
     </div>
     
 
