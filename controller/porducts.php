@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../model/Pagina_Iniciom.php';
 require_once __DIR__ . '/../model/conection_BD.php';
 
-class ProductViewController {
+class ProductController {
     private $modelo;
     private $db;
 
@@ -41,4 +41,6 @@ class ProductViewController {
             $id_producto
         );
     }
+
+
 }

@@ -1,5 +1,5 @@
 <!-- view/vista_cesta.php -->
-<?php require_once 'controller/cesta.php';?>
+<!-- <?php require_once 'controller/cesta.php';?> -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,6 +7,11 @@
     <title>Cesta de Compras</title>
 </head>
 <body>
+<div class="">
+            <?php
+            include __DIR__. "./header.php";
+            ?>
+   </div>
     <h1>Cesta de Compras</h1>
     <ul>
         <?php foreach ($this->cesta->getProductos() as $producto): ?>
