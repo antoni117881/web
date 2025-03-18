@@ -8,7 +8,7 @@ class Cesta {
         $this->conn = $db;
     }
 
-    public function addProducto($id_usuario, $id_producto) {
+    public function addProductoa($id_usuario, $id_producto) {
         // Verificar si el producto ya está en la cesta
         $stmt = $this->conn->prepare("SELECT * FROM carrito WHERE id_usuario = ? AND id_producto = ?");
         $stmt->bind_param("ii", $id_usuario, $id_producto);
@@ -39,6 +39,23 @@ class Cesta {
         $stmt->bind_param("d", $id);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
+    }
+
+    public function addProducto($data) {
+        header('Content-Type: application/json'); // Asegúrate de establecer el tipo de contenido
+        if (isset($_SESSION['user_id'])) {
+            $id_usuario = $_SESSION['user_id'];
+            $result = $this->cestaModel->addProducto($id_usuario, $data['id_producto']);
+            
+            if ($result) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Error al añadir el producto.']);
+            }
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Usuario no autenticado.']);
+        }
+        exit();
     }
 }
 ?>
