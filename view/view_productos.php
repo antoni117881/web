@@ -1,5 +1,5 @@
 <?php
-                require_once 'controller/porducts.php';
+                require_once 'controller/productos_C.php';
                 require_once 'controller/Pagina_inicio.php';
                 
                 

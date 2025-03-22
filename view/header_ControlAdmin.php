@@ -18,19 +18,31 @@
         margin-top: 20px;
         padding: 50px;
         border-radius: 10px;
+        text-align: center;
 
         
     }
+    .Container_Panel h1{
+        color: white;
+        font-size: 27px;
+    }
     .PanelAdmin{
-        display: grid;
+        /* display: grid;
         justify-content: space-between;
-        align-items: center;
+        align-items: center; */
         
     }
+    
     .PanelAdmin input{
         cursor: pointer;
        margin-top: 20px;
         padding: 10px;
+    }
+    .PanelAdmin input:hover{
+        background-color:rgb(29, 63, 82);
+        color: white;
+       
+        transform: scale(1.1);
     }
     .header_ControlAdmin{
         display: flex;

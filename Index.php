@@ -49,7 +49,7 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
         include __DIR__.'/view/vista_cesta.php';
          break;
     case 'SaveProducts':
-        include __DIR__.'/controller/guardar_producto.php';
+        include __DIR__.'/controller/producto/guardarProducto_C.php';
         break;
 
     // View 

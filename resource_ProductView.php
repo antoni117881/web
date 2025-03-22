@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/controller/porducts.php';
+require_once __DIR__ . '/controller/productos_C.php';
 
 // Obtener el ID del producto
 $id_producto = isset($_GET['id']) ? (int)$_GET['id'] : 0;
