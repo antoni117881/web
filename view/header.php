@@ -21,11 +21,12 @@
         <?php } else { ?>
             <p class="welcome-message">Bienvenido, <?php echo $_SESSION["nameAccount"] ?? "Usuario"; ?></p>
             <a href="?action=exitLogin" class="btn-link">Salir</a>
-            <a href="?action=ProductosGeneral" class="btn-link">Productos</a>
+            <a href="?action=ProductosPag" class="btn-link">Productos</a>
             <a href="?action=cesta" class="btn-link">Ver Cesta</a>
+            <a href="?action="> Pruebas </a>
 
             <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === "admin") { ?>
-                <a href="?action=AdminAddProduct" class="btn-link">Panel de Administrador</a>
+                <a href="?action=PanelAdmin" class="btn-link">Panel de Administrador</a>
                 <p class="admin-message">Eres admin</p>
             <?php } else{ ?>
                 <p class="admin-message">Eres Cliente</p>

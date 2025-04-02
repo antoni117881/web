@@ -6,16 +6,16 @@ class ProductoModelo {
         $this->db = $db;
     }
 
-    public function obtenerTodosProductos() {
-        try {
-            $consulta = $this->db->prepare("SELECT DISTINCT * FROM productos");
-            $consulta->execute();
-            return $consulta->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error en obtenerTodosProductos: " . $e->getMessage());
-            return false;
-        }
-    }
+    // public function obtenerTodosProductos() {
+    //     try {
+    //         $consulta = $this->db->prepare("SELECT DISTINCT * FROM productos");
+    //         $consulta->execute();
+    //         return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    //     } catch (PDOException $e) {
+    //         error_log("Error en obtenerTodosProductos: " . $e->getMessage());
+    //         return false;
+    //     }
+    // }
 
     public function obtenerProductoPorId($id) {
         try {

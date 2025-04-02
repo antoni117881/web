@@ -1,6 +1,6 @@
 <?php
-    require_once __DIR__. '/../model/conection_BD.php';
-    require_once __DIR__. '/../model/users.php';
+    require_once __DIR__. '/../../model/conection_BD.php';
+    require_once __DIR__. '/../../model/users.php';
     
     $sesion_ok = false;
     $conection = DB::getInstance();
@@ -16,15 +16,15 @@
 
     if($conection_ok) {
         $_SESSION["nameAccount"] = $_POST["nameAccount"];
-        echo "redirigiendo a la pagina principal";
-        include __DIR__. '/../resource_Menu.php';
+        include __DIR__. '/../../resource_Menu.php';
+        
        $sesion_ok = true;
        $_SESSION["SesionStart"] = true;
 
     }else {
         echo $conection_ok;
         $error = "Usuari o contrasenya incorrectes";
-        include __DIR__ . '/../view/login_error.php';
+        echo "<script>alert('error en Controller/Autentificacion/loginSESSION')</script>";
         $sesion_ok= false;
         $_SESSION["SesionStart"] = false;
     }

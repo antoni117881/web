@@ -6,6 +6,6 @@ session_unset(); // Elimina todas las variables de sesión
 session_destroy(); // Destruye la sesión
 
 // Redirige al login
-include __DIR__ . '/../resource_Menu.php';
+include __DIR__ . '/../../resource_Menu.php';
 exit();
 ?>

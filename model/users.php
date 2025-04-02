@@ -86,13 +86,23 @@ function login($conection, $nameAccount, $password) {
     return false;
 }
 
+// public function obtenerUsuarios($conection) {
+//     try {
+//         $consulta = $conection->prepare("SELECT DISTINCT * FROM usuarios");
+//         $consulta->execute();
+//         return $consulta->fetchAll(PDO::FETCH_ASSOC);
+//     } catch (PDOException $e) {
+//         error_log("Error en obtener Usuario: " . $e->getMessage());
+//         return false;
+//     }
+// }
 
-function validarLogin(
-   
-){
+
+function obtenerUsuarios($conection) {    
+    $consulta_usuarios = $conection->prepare("SELECT  * FROM usuarios");
+    $consulta_usuarios->execute();
+    return $consulta_usuarios->fetchAll(PDO::FETCH_ASSOC);
 }
-
-
 function ReinciarContraseña(
    
     ){

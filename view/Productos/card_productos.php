@@ -1,9 +1,5 @@
 <?php
-                require_once 'controller/productos_C.php';
-                require_once 'controller/Pagina_inicio.php';
-                
-                
-                
+                require_once __DIR__ . '/../../controller/producto/listarProductos.php';
                 if ($productos) {   
                     foreach ($productos as $producto) {
                         ?>
