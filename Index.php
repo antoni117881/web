@@ -8,13 +8,15 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'default'; // Valor predete
 switch ($action) { //aquí solo apuntamos a controladores y resource no a modulos
     
     // Resource (PAGINAS)
+    case 'Home':
+        include __DIR__.'/resource_Menu.php';
+        break;
     case 'LoginUser':
         include __DIR__.'/resource_LoginSession.php';
         break;
     case 'Registro':
         include __DIR__.'/resource_Register.php';
         break;
-        
     case 'Productos':
         include __DIR__.'/resource_Productos.php';
         break;  

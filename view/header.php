@@ -1,7 +1,7 @@
 
 <div class="header">
     <h2 class="site-title">
-        <a href="?action=home">Super Suela</a>
+        <a href="?action=Home">Super Suela</a>
     </h2>
     <nav class="nav-links">
         <?php 

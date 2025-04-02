@@ -29,4 +29,5 @@
                 <a href="?action=" class="btn-volver">Volver al Menú</a>
             </div>
         <?php endif; ?>
-    </div>
+</div>
+ 
