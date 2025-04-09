@@ -51,6 +51,9 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
     case 'SaveProducts':
         include __DIR__.'/controller/guardar_producto.php';
         break;
+    case 'carrito':
+        include __DIR__.'/controller/cesta.php';
+        break;
 
     // View 
     case 'AdminAddProduct':
