@@ -1,3 +1,23 @@
+<style>
+.imagen-producto{
+    width: 250px;
+    height: 250px;
+}
+.producto-card{ 
+        background:linear-gradient(145deg,rgb(255, 183, 0),rgb(29, 123, 206)) ;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        margin: 10px;
+}
+.container-cards{
+        display: flex;
+        flex-direction: row;
+    }
+   
+</style>
+
+
 <div class="container-cards">
 <?php
                 require_once __DIR__ . '/../../controller/producto/listarProductos.php';
@@ -8,7 +28,7 @@
                             <div class="producto-card">
                                 <div class="detalles"> 
                                     <h2><?php echo $producto['nombre']; ?></h2>
-                                    <p class="imagen-producto"><?php echo $producto['imagen']; ?></p>
+                                    <img  class="imagen-producto" src="<?php echo $producto['imagen']; ?>" >
                                     <p class="descripcion"><?php echo $producto['descripcion']; ?></p>
                                     <p class="precio">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
                                     <p class="categoria">Categoría: <?php echo $producto['categoria']; ?></p>
@@ -51,16 +71,8 @@ function addToCart(productId) {
 }
 </script>
 <style>
-    .container-cards{
-        display: flex;
-        flex-direction: row;
-    }
-    .producto-card{
-        margin: 10px;
-        background-color: bisque;
-        border: 1px solid gray;
-        border-radius: 20px
-    }
+   
+   
     .detalles{
         margin:20px;
     }
