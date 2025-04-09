@@ -1,8 +1,8 @@
 <?php
 
 
-require_once __DIR__ . '/../model/users.php';
-require_once __DIR__ . '/../model/conection_BD.php';
+require_once __DIR__ . '/../../model/usuario_M.php';
+require_once __DIR__ . '/../../model/conection_BD.php';
 
 $mensajeError = [];
 
@@ -79,7 +79,7 @@ if (empty($_POST['response'])) {
 if (!empty($mensajeError)) {
 
     $_SESSION['errores'] = $mensajeError; 
-    include __DIR__ . '/../view/registre_error.php'; // Mostrar la vista de errores
+    include __DIR__ . '/../../view/Mensajes/error_Registro.php'; // Mostrar la vista de errores
     exit();
 }
 
@@ -115,7 +115,7 @@ if ($registre) {
     $confirmacionRegistre ="Registrado correctamente";
     $_SESSION['ValidatedRegistre'] = $confirmacionRegistre;
     // include __DIR__.'/resource_Menu.php';
-    include __DIR__ . '/../resource_Menu.php';  
+    include __DIR__ . '/../../resource_Menu.php';  
 }
 
 

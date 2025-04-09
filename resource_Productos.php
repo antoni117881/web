@@ -15,7 +15,7 @@
         <div class="Container-Menu"> 
             <h1>NUESTROS PRODUCTOS</h1>
             <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
-            <?php include 'view/view_productos.php'; ?>
+           
             </div>   
         </div>
     </body>

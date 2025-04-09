@@ -87,12 +87,11 @@ function login($conection, $nameAccount, $password) {
 }
 
 
-function validarLogin(
-   
-){
+function obtenerUsuarios($conection) {    
+    $consulta_usuarios = $conection->prepare("SELECT  * FROM usuarios");
+    $consulta_usuarios->execute();
+    return $consulta_usuarios->fetchAll(PDO::FETCH_ASSOC);
 }
-
-
 function ReinciarContraseña(
    
     ){

@@ -1,23 +1,8 @@
 <?php
-require_once __DIR__ . '/controller/productos_C.php';
-
-// Obtener el ID del producto
-$id_producto = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
-// Inicializar el controlador
-$controlador = new ProductController();
-$resultado = $controlador->mostrarVistaProducto($id_producto); // Asegúrate de obtener el resultado
-
+ //! Aqui recuperar Prodcuto por Id con el controlador 
+ //todo: en el boton de ir a producto en el menu de productos EJECUTARA FUNCION  obtenerPorID
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Detalles del Producto</title>
-    <link rel="stylesheet" href="StylesResource.css">
-</head>
-<body>
-    <div class="container-producto">
+<div class="container-producto">
         <?php if (!$resultado['error']): ?>
             <?php $producto = $resultado['producto']; ?>
             <div class="producto-detalle">
@@ -44,6 +29,5 @@ $resultado = $controlador->mostrarVistaProducto($id_producto); // Asegúrate de 
                 <a href="?action=" class="btn-volver">Volver al Menú</a>
             </div>
         <?php endif; ?>
-    </div>
-</body>
-</html> 
+</div>
+ 

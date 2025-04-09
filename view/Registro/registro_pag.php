@@ -1,42 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Crear Cuenta</title>
-    <link rel="stylesheet" href="../view/View_Css/Registre.css">
-    <style>
-     .Container-Menu {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         margin-top: 50px;
-     }
-     .Container-Registre {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         margin-top: 50px;
-         background-color:rgb(88, 155, 177);
-     }
-     .Form_Registre {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         margin: 30px;
-     }
-</style>
-</head>
-<body>
+
 <div class="">
             <?php
-            include __DIR__. "./header.php";
+            include __DIR__. "/../header.php";
             ?>
    </div>
     <div class="Container-Menu">
-        
-    
         <div class="Container-Registre">
         <h1>Regístrate</h1>
             <div class="Form_Registre">
@@ -82,5 +50,3 @@
             </div>
         </div>
     </div>
-</body>
-</html>
