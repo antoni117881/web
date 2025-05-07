@@ -1,65 +1,84 @@
 <?php
-require_once 'model/cesta.php'; // Incluir el modelo correctamente
-$model = new CartModel(); // Crear una instancia del modelo
-$cart = $model->getProducts(); // Obtener los productos de la cookie
+// Asumimos que Cesta.php está en una ruta accesible, por ejemplo, ../model/Cesta.php
+// Ajusta la ruta según tu estructura de directorios.
+require_once __DIR__ . '/../model/Cesta.php'; // O la ruta correcta
+
+// Obtener los productos del carrito
+$cartItems = getCartItems(); // Esta es la nueva función
+
+// Si se recibe una acción de eliminar (para procesar antes de mostrar)
+// Esto es un ejemplo simplificado. Idealmente, esto se manejaría en un controlador
+// o a través de una petición AJAX como la de añadir.
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'remove' && isset($_POST['product_id'])) {
+    removeFromCart($_POST['product_id']);
+    // Redirigir para evitar reenvío del formulario al recargar
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Cesta de Compras</title>
-    
+    <script>
+    // La función removeProduct de JavaScript debería hacer una llamada AJAX
+    // similar a addToCart para una mejor UX, en lugar de un envío de formulario.
+    // Pero si se mantiene el envío de formulario, el PHP de arriba lo manejaría.
+    // Por ahora, voy a modificar el botón para que envíe un formulario POST simple.
+    function submitRemoveForm(productId) {
+        const form = document.getElementById('remove-form-' + productId);
+        if (form) {
+            form.submit();
+        }
+    }
+    </script>
 </head>
 <body>
-<?php
-            include __DIR__. "/header.php";
-            ?>
+    <?php
+    // Asumo que header.php existe en el mismo directorio que esta vista
+    // o ajusta la ruta.
+    // include __DIR__. "/header.php";
+    echo "<!-- Incluyendo header (simulado) -->";
+    ?>
     <h1>Cesta de Compras</h1>
-    <button onclick="clearCart()">Vaciar Cesta</button>
     <ul id="cart-list">
-        <?php if (!empty($cart)): ?>
-            <?php foreach ($cart as $productId): ?>
+        <?php if (!empty($cartItems)): ?>
+            <?php foreach ($cartItems as $productId): ?>
                 <li id="product-<?= htmlspecialchars($productId) ?>">
                     Producto ID: <?= htmlspecialchars($productId) ?>
-                    <button onclick="removeProduct(<?= htmlspecialchars($productId) ?>)">Eliminar</button>
+                    
+                    <!-- Formulario para eliminar (POST para evitar problemas con GET y re-ejecución) -->
+                    <button onclick="removeFromCart(<?php echo $productId; ?>)" class="btn-Agregar">borrar producto </button>
+                    
                 </li>
             <?php endforeach; ?>
-            
         <?php else: ?>
             <li>La cesta está vacía.</li>
         <?php endif; ?>
     </ul>
+
+    <p><a href="index.php">Seguir comprando</a></p> <!-- Ejemplo de enlace para volver a la tienda -->
+
+    <script>
+function removeFromCart(productId) {    
+    $.ajax({
+        type: "POST",
+        url: "?action=borrarcarrito",
+        data: { "id_producto": productId },
+        success: function(data) {
+            console.log(data); // Asegúrate de que la respuesta se esté mostrando en la consola
+            location.reload();
+
+        },
+        error: function(xhr) {
+            alert('Error en la solicitud: ' + xhr.status);
+        }
+    });
+}
+</script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 </body>
 </html>
-
-<script>
-   function removeProduct(productId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "?action=carrito", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("product_id=" + productId);
-
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var productItem = document.getElementById("product-" + productId);
-            if (productItem) {
-                productItem.remove();
-            }
-        }
-    };
-}
-
-function clearCart() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "?action=clear_cart", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send();
-
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var cartList = document.getElementById("cart-list");
-            cartList.innerHTML = "<li>La cesta está vacía.</li>";
-        }
-    };
-}
-
-</script>

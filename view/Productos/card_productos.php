@@ -47,29 +47,24 @@
  </div>
 <script>
 function addToCart(productId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "controller/cesta.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var data =(xhr.responseText); // Asegúrate de parsear la respuesta
-                if (data && data.success) {
-                    alert('Producto añadido a la cesta');
-                } else {
-                    alert('Error al añadir el producto: ' + (data.message || 'Error desconocido'));
-                }
-            } else {
-                alert('Error en la solicitud: ' + xhr.status);
-            }
+    $.ajax({
+        type: "POST",
+        url: "?action=carrito",
+        data: { "id_producto": productId },
+        success: function(data) {
+            console.log(data); // Asegúrate de que la respuesta se esté mostrando en la consola
+          
+        },
+        error: function(xhr) {
+            alert('Error en la solicitud: ' + xhr.status);
         }
-    };
-
-    var body = JSON.stringify({ id_producto: productId });
-    xhr.send(body);
+    });
 }
 </script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 <style>
    
    
