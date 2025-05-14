@@ -18,6 +18,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 ?>
 <!DOCTYPE html>
 <html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f6fa;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    #cart-list {
+        list-style: none;
+        padding: 0;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    #cart-list li {
+        background-color: #ffffff;
+        padding: 15px 20px;
+        margin-bottom: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .btn-Agregar {
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .btn-Agregar:hover {
+        background-color: #c0392b;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 16px;
+    }
+
+    a {
+        color: #2980b9;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
 <head>
     <title>Cesta de Compras</title>
     <script>
@@ -33,6 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
     </script>
 </head>
+<header>
+<?php include __DIR__ . "./header.php"; ?>
+</header>
 <body>
     <?php
     // Asumo que header.php existe en el mismo directorio que esta vista
