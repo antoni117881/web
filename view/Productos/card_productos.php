@@ -1,20 +1,93 @@
 <style>
-.imagen-producto{
-    width: 250px;
-    height: 250px;
-}
-.producto-card{ 
-        background:linear-gradient(145deg,rgb(255, 183, 0),rgb(29, 123, 206)) ;
-        border-radius: 15px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-        margin: 10px;
-}
-.container-cards{
-        display: flex;
-        flex-direction: row;
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
     }
-   
+
+    body {
+        background-color: #f0f2f5;
+        padding: 20px;
+    }
+
+    .container-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .producto-card {
+        background-color: #1e1e2f;
+        color: #f1f1f1;
+        width: 260px;
+        height: 460px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+    }
+
+    .producto-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .imagen-producto {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 12px;
+    }
+
+    .detalles {
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .detalles h2 {
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: #ffffff;
+    }
+
+    .descripcion,
+    .precio,
+    .categoria,
+    .id_producto {
+        font-size: 14px;
+        margin: 2px 0;
+        color: #cccccc;
+    }
+
+    .btn-Login,
+    .btn-Agregar {
+        margin: 6px 4px 0;
+        padding: 10px;
+        font-size: 14px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-Login:hover,
+    .btn-Agregar:hover {
+        background: linear-gradient(135deg, #0072ff, #00c6ff);
+    }
 </style>
 
 
@@ -47,29 +120,24 @@
  </div>
 <script>
 function addToCart(productId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "controller/cesta.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var data =(xhr.responseText); // Asegúrate de parsear la respuesta
-                if (data && data.success) {
-                    alert('Producto añadido a la cesta');
-                } else {
-                    alert('Error al añadir el producto: ' + (data.message || 'Error desconocido'));
-                }
-            } else {
-                alert('Error en la solicitud: ' + xhr.status);
-            }
+    $.ajax({
+        type: "POST",
+        url: "?action=carrito",
+        data: { "id_producto": productId },
+        success: function(data) {
+            console.log(data); // Asegúrate de que la respuesta se esté mostrando en la consola
+          
+        },
+        error: function(xhr) {
+            alert('Error en la solicitud: ' + xhr.status);
         }
-    };
-
-    var body = JSON.stringify({ id_producto: productId });
-    xhr.send(body);
+    });
 }
 </script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 <style>
    
    
