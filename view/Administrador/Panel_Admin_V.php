@@ -3,7 +3,7 @@
 $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_productos';
 ?>
 
-<div >
+<div>
     <div class="Container_Panel">
         <h1>Panel de Administrador</h1>
         
@@ -13,22 +13,22 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
             <div class="botones-admin">
                 <form method="post">
                     <input type="hidden" name="adminAction" value="añadir_producto">
-                    <input type="submit" value="Añadir Producto" />
+                    <input type="submit" value="Añadir" />
                 </form>
                 
                 <form method="post">
                     <input type="hidden" name="adminAction" value="eliminar_producto">
-                    <input type="submit" value="Eliminar Producto" />
+                    <input type="submit" value="Eliminar" />
                 </form>
                 
                 <form method="post">
                     <input type="hidden" name="adminAction" value="modificar_producto">
-                    <input type="submit" value="Modificar Producto" />
+                    <input type="submit" value="Modificar" />
                 </form>
                 
                 <form method="post">
                     <input type="hidden" name="adminAction" value="ver_productos">
-                    <input type="submit" value="Ver Productos" />
+                    <input type="submit" value="Ver" />
                 </form>
             </div>
         </div>
@@ -39,130 +39,145 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
             <div class="botones-admin">
                 <form method="post">
                     <input type="hidden" name="adminAction" value="añadir_usuario">
-                    <input type="submit" value="Añadir Usuario" />
+                    <input type="submit" value="Añadir" />
                 </form>
                 
                 <form method="post">
                     <input type="hidden" name="adminAction" value="eliminar_usuario">
-                    <input type="submit" value="Eliminar Usuario" />
+                    <input type="submit" value="Eliminar" />
                 </form>
                 
                 <form method="post">
                     <input type="hidden" name="adminAction" value="modificar_usuario">
-                    <input type="submit" value="Modificar Usuario" />
+                    <input type="submit" value="Modificar" />
                 </form>
                 
                 <form method="post">
                     <input type="hidden" name="adminAction" value="ver_usuarios">
-                    <input type="submit" value="Ver Usuarios" />
+                    <input type="submit" value="Ver" />
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 <style>
 .Container_Panel {
-    background-color: #1f2937;
-    width: 280px;
-    height: 100vh;
-    padding: 25px 20px;
-    border-radius: 12px;
-    color: #f3f4f6;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    background: linear-gradient(135deg, #f5f7fa, #e0eafc);
+    width: 320px;
+    max-width: 90vw;
+    min-height: 400px;
+    padding: 24px 28px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .Container_Panel h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 2px solid #2563eb;
-    padding-bottom: 12px;
-    letter-spacing: 1px;
-    flex-shrink: 0;
+    margin-bottom: 18px;
+    color: #1a1a1a;
+    border-bottom: 3px solid #4f46e5;
+    padding-bottom: 10px;
+    letter-spacing: 0.5px;
 }
 
 .seccion-admin {
-    background-color: #374151;
-    border-radius: 10px;
-    padding: 15px 20px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
     margin-bottom: 20px;
-    box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
-    overflow-y: auto;
     flex-grow: 1;
-}
-
-.seccion-admin:last-of-type {
-    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .seccion-admin h2 {
     font-size: 1.25rem;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     font-weight: 600;
-    color: #e0e7ff;
-    border-left: 4px solid #2563eb;
-    padding-left: 12px;
+    color: #4f46e5;
+    border-left: 4px solid #4f46e5;
+    padding-left: 14px;
 }
 
 .botones-admin {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* dos columnas iguales */
     gap: 12px;
+    overflow-y: auto;
+    padding-right: 4px;
+    justify-items: center; /* centra los botones en la celda */
+}
+
+.botones-admin form {
+    width: 100%; /* para que el form ocupe todo el grid cell */
+    display: flex;
+    justify-content: center; /* centra el input dentro del form */
 }
 
 .botones-admin input[type="submit"] {
-    background-color: #2563eb;
+    background-color: #4f46e5;
     border: none;
-    color: #f3f4f6;
-    padding: 12px 0;
+    color: white;
+    padding: 0; /* padding en input para controlar altura */
     border-radius: 8px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    width: 120px;   /* ancho fijo */
+    height: 36px;   /* alto fijo */
+    line-height: 36px; /* centra vertical texto */
 }
 
 .botones-admin input[type="submit"]:hover {
-    background-color: #1e40af;
-    box-shadow: 0 5px 15px rgba(30, 64, 175, 0.6);
+    background-color: #4338ca;
+    box-shadow: 0 5px 15px rgba(67, 56, 202, 0.4);
 }
 
 .botones-admin input[type="submit"]:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 6px rgba(30, 64, 175, 0.5);
+    box-shadow: 0 2px 6px rgba(67, 56, 202, 0.3);
 }
 
-.seccion-admin::-webkit-scrollbar {
-    width: 6px;
-}
-.seccion-admin::-webkit-scrollbar-thumb {
-    background-color: #2563eb;
-    border-radius: 3px;
-}
-.seccion-admin::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .Container_Panel {
         width: 100%;
-        height: auto;
-        padding: 20px 15px;
+        min-height: auto;
+        padding: 20px 16px;
     }
-    .seccion-admin {
-        margin-bottom: 15px;
+
+    .botones-admin {
+        grid-template-columns: 1fr; /* apilar botones en móvil */
+        gap: 10px;
+        justify-items: stretch;
     }
+
+    .botones-admin form {
+        width: 100%;
+        justify-content: stretch;
+    }
+
     .botones-admin input[type="submit"] {
+        width: 100%;      /* ocupan todo el ancho en móvil */
+        height: 36px;
+        line-height: 36px;
         font-size: 0.9rem;
-        padding: 10px 0;
+        padding: 0;
     }
 }
 </style>
-
