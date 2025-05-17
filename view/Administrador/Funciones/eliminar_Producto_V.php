@@ -61,7 +61,17 @@
             <h2>Buscar Producto</h2>
             <div class="form-container">
                 <label for="text" name="idProducto" >Id Producto </label>
-                <input type="text" name="idProduct" id="idProduct" required>
+                <input type="text" name="idProduct" id="idProduct" required><?php
+// Conexión a la base de datos
+require_once __DIR__ . '/../../../model/conection_BD.php';
+
+// Obtener la conexión
+$db = DB::getInstance();
+
+// Consulta para obtener productos
+$query = $db->prepare("SELECT id, nombre FROM productos ORDER BY nombre");
+$result = $query->execute();
+$productos = $query->fetchAll(PDO::FETCH_ASSOC); ?>
                 <input type="hidden" id="action" value="buscarProducto">
                 <button id="botton_Funcion_delete" >Buscar Producto</button>
             </div>

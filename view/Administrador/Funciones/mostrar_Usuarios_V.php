@@ -1,7 +1,15 @@
+<?php
+             // Conexión a la base de datos
+require_once __DIR__ . '/../../../model/conection_BD.php';
 
-            <?php
-             //require_once __DIR__ . '/web/controller/Usuario/listarUsuarios.php';
-            require_once __DIR__. '/../../../controller/Usuario/listarUsuarios.php';
+// Obtener la conexión
+$db = DB::getInstance();
+
+// Consulta para obtener usuarios
+$query = $db->prepare("SELECT * FROM usuarios ORDER BY fecha_registro DESC");
+$result = $query->execute();
+$usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
+            require_once __DIR__ . '/../../../controller/Usuario/listarUsuarios.php';
 
             ?>
     <div class="">
