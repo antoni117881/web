@@ -2,24 +2,34 @@
     <div class="Container_Panel">
     <h1>Panel de Administrador</h1>
     <div class= "PanelAdmin">
-        <input type="button" onclick="location.href='index.php';" value="Añadir Producto" />
-        <input type="button" onclick="location.href='index.php';" value="Editar Producto" />
-        <input type="button" onclick="location.href='index.php';" value="Eliminar Producto" />
-        <input type="button" onclick="location.href='index.php';" value="Modificar Usuarios" />
-        <input type="button" onclick="location.href='index.php';" value="Ver Usuarios" />
+        <input type="button" name="Añadir" onclick="handleButtonClick(this.value);" value="Añadir " />
+        <input type="button" onclick="handleButtonClick(this.value);"value="Editar " />
+        <input type="button" onclick="handleButtonClick(this.value);" value="Eliminar " />
+        <input type="button" onclick="handleButtonClick(this.value);" value="Modificar " />
+        <input type="button" onclick="handleButtonClick(this.value);" value="Ver " />
     </div>
     </div>
 
     
 </div>
+<script>
+    function handleButtonClick(value) {
+        console.log("Valor Botón presionado:", value);
+
+        // Guardar en localStorage
+        localStorage.setItem('valueButtonPanelAdmin', value);
+
+        // Recuperar (por si quieres usarlo después)
+        const savedValue = localStorage.getItem('valueButtonPanelAdmin');
+        console.log("Valor guardado:", savedValue);
+    }
+</script>
 <style>
     .Container_Panel{
         background-color:rgb(61, 68, 82);
-        margin-top: 20px;
         padding: 50px;
-        border-radius: 10px;
         text-align: center;
-
+        
         
     }
     .Container_Panel h1{
@@ -47,6 +57,7 @@
     .header_ControlAdmin{
         display: flex;
         justify-content: center;
-        
+        height: 100%;
+     
     }
     </style>
