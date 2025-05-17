@@ -55,5 +55,15 @@
             var body = JSON.stringify({ id_producto: idProduct }); 
             xhr.send(body);
         }
-    </script>
+        </script>
+
+        <div>
+            <h2>Buscar Producto</h2>
+            <div class="form-container">
+                <label for="text" name="idProducto" >Id Producto </label>
+                <input type="text" name="idProduct" id="idProduct" required>
+                <input type="hidden" id="action" value="buscarProducto">
+                <button id="botton_Funcion_delete" >Buscar Producto</button>
+            </div>
+        </div>
 </div>

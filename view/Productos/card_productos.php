@@ -15,11 +15,8 @@
                                     <p class="id_producto">Id Producto: <?php echo $producto['id_producto']; ?></p>
                                     <a href="?action=Producto&id=<?php echo $producto['id_producto']; ?>" class="btn-Login">Ir a Producto : <?php echo $producto['id_producto']; ?></a>
                                     <button onclick="addToCart(<?php echo $producto['id_producto']; ?>)" class="btn-Agregar">Agregar a la Cesta</button>
-                      
-                                </div>
-                                 
+                                </div>                        
                             </div>
-                       
                         <?php
                     }
                 }
