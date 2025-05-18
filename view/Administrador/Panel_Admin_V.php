@@ -17,16 +17,6 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
                 </form>
                 
                 <form method="post">
-                    <input type="hidden" name="adminAction" value="eliminar_producto">
-                    <input type="submit" value="Eliminar" />
-                </form>
-                
-                <form method="post">
-                    <input type="hidden" name="adminAction" value="modificar_producto">
-                    <input type="submit" value="Modificar" />
-                </form>
-                
-                <form method="post">
                     <input type="hidden" name="adminAction" value="ver_productos">
                     <input type="submit" value="Ver" />
                 </form>
@@ -40,16 +30,6 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
                 <form method="post">
                     <input type="hidden" name="adminAction" value="añadir_usuario">
                     <input type="submit" value="Añadir" />
-                </form>
-                
-                <form method="post">
-                    <input type="hidden" name="adminAction" value="eliminar_usuario">
-                    <input type="submit" value="Eliminar" />
-                </form>
-                
-                <form method="post">
-                    <input type="hidden" name="adminAction" value="modificar_usuario">
-                    <input type="submit" value="Modificar" />
                 </form>
                 
                 <form method="post">

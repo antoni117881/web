@@ -1,5 +1,70 @@
 <?php
 
+function addUser($conection, $userData) {
+    try {
+        // Iniciamos una transacción
+        $conection->beginTransaction();
+        
+        $sql = "INSERT INTO usuarios (
+                nombre_cuenta, 
+                contraseña, 
+                nombre, 
+                apellido, 
+                email, 
+                direccion,
+                telefono,
+                pregunta,
+                respuesta
+            ) VALUES (
+                ?, ?, ?, ?, ?, ?, ?, ?, ?
+            )";
+        
+        $query = $conection->prepare($sql);
+        
+        // Bindear los parámetros
+        $query->bindParam(1, $userData['nombre_cuenta']);
+        $query->bindParam(2, $userData['contraseña']);
+        $query->bindParam(3, $userData['nombre']);
+        $query->bindParam(4, $userData['apellidos']);
+        $query->bindParam(5, $userData['email']);
+        $query->bindParam(6, $userData['direccion']);
+        $query->bindParam(7, $userData['telefono']);
+        $query->bindParam(8, $userData['pregunta']);
+        $query->bindParam(9, $userData['respuesta']);
+        
+        error_log("SQL a ejecutar: " . $sql);
+        error_log("Parámetros a usar: " . print_r($userData, true));
+        
+        $result = $query->execute();
+        if (!$result) {
+            $error = $query->errorInfo();
+            throw new PDOException("Error ejecutando la consulta: " . print_r($error, true));
+        }
+        
+        $conection->commit();
+        return true;
+
+    } catch (PDOException $e) {
+        // Si hay un error, revierte la transacción
+        if ($conection->inTransaction()) {
+            $conection->rollBack();
+        }
+        error_log("Error en addUser: " . $e->getMessage());
+        throw $e;
+    }
+}
+
+function emailExists($conection, $email) {
+    try {
+        $query = $conection->prepare("SELECT COUNT(*) FROM usuarios WHERE email = :email");
+        $query->execute([':email' => $email]);
+        return $query->fetchColumn() > 0;
+    } catch (PDOException $e) {
+        error_log("Error al verificar email: " . $e->getMessage());
+        return false;
+    }
+}
+
 
 function registrar(
     $conection, 
@@ -92,6 +157,7 @@ function obtenerUsuarios($conection) {
     $consulta_usuarios->execute();
     return $consulta_usuarios->fetchAll(PDO::FETCH_ASSOC);
 }
+
 function ReinciarContraseña(
    
     ){

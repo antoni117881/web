@@ -66,6 +66,14 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
             include __DIR__.'/controller/borrarCesta.php';
             break;
 
+    // Usuarios
+    case 'ModificarUsuario':
+        include __DIR__.'/view/Administrador/Funciones/modificar_Usuario_V.php';
+        break;
+    case 'MostrarUsuarios':
+        include __DIR__.'/view/Administrador/Funciones/mostrar_Usuarios_V.php';
+        break;
+
     // View 
 
     default:
