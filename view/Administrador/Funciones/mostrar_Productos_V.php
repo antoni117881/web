@@ -1,123 +1,113 @@
 <?php
-// Conexión a la base de datos
-require_once __DIR__ . '/../../../model/conection_BD.php';
-
-// Obtener la conexión
-$db = DB::getInstance();
-
-// Verificar si la conexión es válida
-if (!$db) {
-    echo "<p style='color: red;'>Error: No se pudo conectar a la base de datos</p>";
-    exit;
-}
-
-// Consulta para obtener todos los productos
-try {
-    $query = $db->prepare("SELECT * FROM productos ORDER BY id DESC");
-    $result = $query->execute();
-    
-    // Verificar si la consulta fue exitosa
-    if (!$result) {
-        echo "<p style='color: red;'>Error en la consulta: " . $db->errorInfo()[2] . "</p>";
-        exit;
-    }
-} catch (PDOException $e) {
-    echo "<p style='color: red;'>Error PDO: " . $e->getMessage() . "</p>";
-    exit;
-}
-
-// Verificar si hay productos
-if ($query->rowCount() > 0) {
-    echo "<div class='tabla-productos'>";
-    echo "<h2>Lista de Productos</h2>";
-    echo "<table>";
-    echo "<thead>";
-    echo "<tr>";
-    echo "<th>ID</th>";
-    echo "<th>Nombre</th>";
-    echo "<th>Descripción</th>";
-    echo "<th>Precio</th>";
-    echo "<th>Stock</th>";
-    echo "<th>Categoría</th>";
-    echo "<th>Fecha de Creación</th>";
-    echo "</tr>";
-    echo "</thead>";
-    echo "<tbody>";
-    
-    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-        echo "<tr>";
-        echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['precio']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['stock']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['fecha_creacion']) . "</td>";
-        echo "</tr>";
-    }
-    
-    echo "</tbody>";
-    echo "</table>";
-    echo "</div>";
-} else {
-    echo "<div class='no-products'>No se encontraron productos</div>";
-}
+require_once __DIR__ . '/../../../controller/producto/listarProductos.php';
 ?>
 
-<style>
-    .tabla-productos {
-        max-width: 1200px;
-        margin: 20px auto;
+
+    <style>
+    .container-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
         padding: 20px;
-        background-color: white;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .producto-card {
+        background: white;
         border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
     }
 
-    .tabla-productos h2 {
-        margin-bottom: 20px;
+    .producto-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .detalles {
+        padding: 20px;
+    }
+
+    .detalles h2 {
+        margin: 0 0 10px 0;
         color: #333;
+        font-size: 1.5rem;
     }
 
-    .tabla-productos table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 1px solid #ddd;
-    }
-
-    .tabla-productos th, .tabla-productos td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .tabla-productos th {
-        background-color: #f5f5f5;
-    }
-
-    .no-products {
+    .descripcion {
         color: #666;
-        margin: 20px 0;
-        padding: 10px;
-        background-color: #f5f5f5;
-        border: 1px solid #ddd;
-        text-align: center;
-    }
-</style>    }
-
-    .tabla-productos th,
-    .tabla-productos td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
+        margin: 10px 0;
+        line-height: 1.4;
     }
 
-    .tabla-productos th {
-        background-color: #f5f5f5;
+    .precio {
+        color: #2563eb;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 10px 0;
+    }
+
+    .categoria {
+        background: #f3f4f6;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+        color: #4b5563;
+        margin: 5px 0;
+    }
+
+    .id_producto {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin: 5px 0;
+    }
+    .btn-modificar {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
         font-weight: 600;
+        margin-top: 10px;
+        width: 100%;
+        transition: all 0.3s ease;
     }
+    .btn-modificar:hover {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    </style>
 
-    .tabla-productos tr:hover {
-        background-color: #f9f9f9;
+
+<div class="container-cards">
+<?php
+if ($productos) {   
+    foreach ($productos as $producto) {
+        ?>
+        <div class="producto-card">
+            <div class="detalles"> 
+                <h2><?php echo htmlspecialchars($producto['nombre']); ?></h2>
+                <p class="descripcion"><?php echo htmlspecialchars($producto['descripcion']); ?></p>
+                <p class="precio">Precio: €<?php echo number_format($producto['precio'], 2); ?></p>
+                <p class="categoria">Categoría: <?php echo htmlspecialchars($producto['categoria']); ?></p>
+                <p class="id_producto">Stock: <?php echo htmlspecialchars($producto['stock']); ?></p>
+                <button onclick="modificarProducto(<?php echo $producto['id_producto']; ?>)" class="btn-modificar">Modificar Producto</button>
+            </div>                        
+        </div>
+        <?php
     }
-</style>
+} else {
+    echo '<div style="text-align: center; padding: 20px;">No hay productos disponibles</div>';
+}
+?>
+</div>
+
+<script>
+function modificarProducto(id) {
+    window.location.href = '?action=ModificarProducto&id=' + id;
+}
+</script>

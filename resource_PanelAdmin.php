@@ -7,31 +7,26 @@ include __DIR__. "/view/header.php";
     <style>
         .Pagina {
             display: grid;
-            grid-template-columns: 1fr 3fr;
-           
-            
+            grid-template-columns: 1fr 3fr; 
         }
 
-        .Panel {
-            
+        .Panel { 
             position: static;
-           
-      
         }
 
         .Container_Menu {
-          
+            justify-items: center;
+            align-content: center;
         }
+       
 
         @media (max-width: 768px) {
             .Pagina {
                 grid-template-columns: 1fr;
-           
             }
             
             .Panel {
                 position: static;
-          
             }
         }
     </style>

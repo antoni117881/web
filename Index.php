@@ -50,6 +50,12 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
     case 'cesta':
         include __DIR__.'/view/vista_cesta.php';
          break;
+    case 'ModificarProducto':
+        include __DIR__.'/view/Administrador/Funciones/modificar_Producto_V.php';
+        break;
+    case 'ActualizarProducto':
+        include __DIR__.'/controller/producto/actualizar_producto.php';
+        break;
     case 'SaveProducts':
         include __DIR__.'/controller/producto/guardarProducto_C.php';
         break;
