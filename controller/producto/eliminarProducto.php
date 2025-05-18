@@ -1,19 +1,46 @@
 <?php 
+// Evita cualquier salida antes del encabezado
+ob_start();
 
-    require_once __DIR__ . '/../../model/Producto_M.php';
-    require_once __DIR__ . '/../../model/conection_BD.php';
+require_once __DIR__ . '/../../model/Producto_M.php';
+require_once __DIR__ . '/../../model/conection_BD.php';
 
-   
-    //* recupera los datos /View/Administrador/Funnciones/eliminarProducto
-    $data = json_decode(file_get_contents("php://input"), true);
-    $id = $data['id_producto'];
+header('Content-Type: application/json');
 
-    // $nombre = $data['nombre'];
+try {
+    $raw = file_get_contents("php://input");
 
+    if (!$raw) {
+        throw new Exception('No se recibieron datos');
+    }
+
+    $data = json_decode($raw, true);
+
+    if (!isset($data['id_producto']) || !is_numeric($data['id_producto'])) {
+        throw new Exception('ID del producto inválido o no proporcionado');
+    }
+
+    $id = intval($data['id_producto']);
     $producto = new ProductoModel();
 
-    $producto -> deleteProduct($id);
+    if ($producto->deleteProduct($id)) {
+        $response = [
+            'success' => true,
+            'message' => 'Producto eliminado correctamente'
+        ];
+    } else {
+        throw new Exception('Error al eliminar el producto');
+    }
+} catch (Exception $e) {
+    $response = [
+        'success' => false,
+        'message' => $e->getMessage()
+    ];
+}
 
+// Limpiar cualquier salida previa
+ob_end_clean();
 
-
-?>
+// Enviar respuesta JSON
+echo json_encode($response);
+exit;

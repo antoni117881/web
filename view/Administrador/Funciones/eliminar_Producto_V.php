@@ -1,79 +1,100 @@
-<div >
-        <!-- Formulario Eliminar Producto -->
-        <div class="form-container">
-            <h2>Eliminar Producto</h2>
-            
-                <label for="idProduct">Id Producto</label>
-                <input type="text" name="idProduct" id="idProduct" required>
+<div>
+    <!-- Formulario Eliminar Producto -->
+    <div class="form-container">
+        <h2>Eliminar Producto</h2>
+        
+        <label for="idProductDelete">Id Producto</label>
+        <input type="text" name="idProductDelete" id="idProductDelete" required>
 
-                <!-- <label for="nombreProduct">Nombre de Producto</label>
-                <input type="text" name="nombreProduct" id="nombreProduct" required> -->
+        <button id="botton_Funcion_delete">Eliminar Producto</button>
+    </div>
 
-                <input type="hidden" id="action" value="deleteProduct">
+    <!-- Formulario Buscar Producto por id  (otro bloque) -->
+    <div class="form-container">
+        <h2>Buscar Producto</h2>
+        
+        <label for="idProductSearch">Id Producto</label>
+        <input type="text" name="idProductSearch" id="idProductSearch" required>
 
-                <button id="botton_Funcion_delete" >Eliminar Producto</button>
-            
-        </div>
-        <script>
-        // Eliminar Producto
-        document.getElementById('botton_Funcion_delete').addEventListener('click', function(event) {
-            event.preventDefault(); // Evita el envío del formulario
+        <button id="boton_Buscar">Buscar Producto</button>
+    </div>
+    <script>
+        document.getElementById('boton_Buscar').addEventListener('click', function(event) {
+            event.preventDefault();
 
-            var idProduct = document.getElementById('idProduct').value;
-            
-            console.log(idProduct);
-            deleteProducto(idProduct);
-        });
+            var idProducto = document.getElementById('idProductSearch').value.trim();
 
-        function deleteProducto(idProduct) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "controller/producto/eliminarProducto.php", true); // controller/producto/eliminarProducto
-            xhr.setRequestHeader("Content-Type", "application/json");
+            if (!idProducto) {
+                alert('Por favor, ingresa un ID de producto');
+                return;
+            }
 
-            xhr.onreadystatechange = function() {
-            
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        try {
-                            var data = xhr.responseText; // Convertir la respuesta en objeto
-                            console.log(data)
-                            if (data.success) {
-                                alert('Producto eliminado correctamente');
-                            } else {
-                                alert('Error al eliminar el producto: ' + (data.message || 'Error desconocido'));
-                            }
-                        } catch (error) {
-                            alert('Error al procesar la respuesta del servidor  ' +  error);
-                            
-                        }
-                    } else {
-                        alert('Error en la solicitud ELIMINAR PRODUCTO: ' + xhr.status);
-                    }
+            fetch('controller/producto/listarProductosId.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id_producto: idProducto })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Producto encontrado: ' + JSON.stringify(data.producto));
+                    console.log(data.producto);
+                } else {
+                    alert('Error: ' + data.message);
                 }
-            };
-            // aqui se envian los datos al controlador 
-            var body = JSON.stringify({ id_producto: idProduct }); 
-            xhr.send(body);
-        }
-        </script>
+            })
+            .catch(error => {
+                console.error('Error en fetch:', error);
+                alert('Error de conexión con el servidor.');
+            });
+        });
+    </script>
 
-        <div>
-            <h2>Buscar Producto</h2>
-            <div class="form-container">
-                <label for="text" name="idProducto" >Id Producto </label>
-                <input type="text" name="idProduct" id="idProduct" required><?php
-// Conexión a la base de datos
-require_once __DIR__ . '/../../../model/conection_BD.php';
-
-// Obtener la conexión
-$db = DB::getInstance();
-
-// Consulta para obtener productos
-$query = $db->prepare("SELECT id, nombre FROM productos ORDER BY nombre");
-$result = $query->execute();
-$productos = $query->fetchAll(PDO::FETCH_ASSOC); ?>
-                <input type="hidden" id="action" value="buscarProducto">
-                <button id="botton_Funcion_delete" >Buscar Producto</button>
-            </div>
-        </div>
 </div>
+
+<script>
+    // Eliminar Producto
+    document.getElementById('botton_Funcion_delete').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var idProduct = document.getElementById('idProductDelete').value.trim();
+        if (!idProduct) {
+            alert('Por favor, introduce un ID de producto válido.');
+            return;
+        }
+
+        deleteProducto(idProduct);
+    });
+
+    function deleteProducto(idProduct) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "controller/producto/eliminarProducto.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        console.log('Respuesta cruda del servidor:', xhr.responseText); // 👈 Agregado
+
+        try {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                alert('Producto eliminado correctamente');
+                location.reload();
+            } else {
+                alert('Error al eliminar el producto: ' + (response.message || 'Error desconocido'));
+            }
+        } catch (error) {
+            console.error('Error al parsear JSON:', error);
+            alert('Error del servidor. Por favor, inténtalo de nuevo.');
+        }
+    }
+};
+        var data = {
+            id_producto: idProduct
+        };
+
+        xhr.send(JSON.stringify(data));
+    }
+</script>

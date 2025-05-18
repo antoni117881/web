@@ -4,6 +4,38 @@ include __DIR__. "/view/header.php";
 ?>
 
 <div class="Pagina">
+    <style>
+        .Pagina {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+           
+            
+        }
+
+        .Panel {
+            
+            position: static;
+           
+      
+        }
+
+        .Container_Menu {
+          
+        }
+
+        @media (max-width: 768px) {
+            .Pagina {
+                grid-template-columns: 1fr;
+           
+            }
+            
+            .Panel {
+                position: static;
+          
+            }
+        }
+    </style>
+
     <!-- Panel lateral izquierdo -->
     <div class="Panel">
         <?php
