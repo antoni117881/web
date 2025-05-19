@@ -20,12 +20,14 @@ if (!isset($_SESSION['nameAccount'])) {
         body {
             background-color: white;
             margin: 0;
-            padding-top: 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .profile-page {
-            max-width: 100%;
-            min-height: calc(100vh - 60px);
+            flex: 1;
+            width: 100%;
         }
 
         .profile-header {

@@ -8,12 +8,21 @@ require_once __DIR__ . '/../../../model/conection_BD.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Usuario</title>
-    <?php include __DIR__ . '/../../header.php'; ?>
+    <link rel="stylesheet" href="/web/css/common.css">
     <style>
+    body {
+        background-color: white;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
     .page-container {
         position: relative;
+        flex: 1;
         width: 100%;
-        padding-top: 30px;
+        padding: 30px;
     }
 
     .btn-back {
@@ -127,6 +136,7 @@ require_once __DIR__ . '/../../../model/conection_BD.php';
     </style>
 </head>
 <body>
+<?php include __DIR__ . '/../../header.php'; ?>
 <div class="page-container">
     <a href="?action=PanelAdmin" class="btn-back">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
