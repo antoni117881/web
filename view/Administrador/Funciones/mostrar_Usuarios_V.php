@@ -3,7 +3,26 @@
 require_once __DIR__ . '/../../../controller/Usuario/listarUsuarios.php';
 ?>
 
-    <div class="users-container">
+<div class="page-title">
+    <h1>Gestión de Usuarios</h1>
+</div>
+
+<style>
+.page-title {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.page-title h1 {
+    color: #1a237e;
+    font-size: 2em;
+    margin: 0;
+    font-weight: 600;
+}
+</style>
+
+<div class="users-container">
         <?php if ($usuarios): ?>
             <?php foreach ($usuarios as $usuario): ?>
                 <div class="user-card">
@@ -156,7 +175,7 @@ require_once __DIR__ . '/../../../controller/Usuario/listarUsuarios.php';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    padding: 20px;
+    
     /* background: #f5f5f5; */
     max-width: 100%;
     margin: 0 auto;
