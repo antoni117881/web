@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
 }
 
 .Container-Menu {
@@ -12,65 +17,31 @@
 .Container-Menu h1 {
     margin-bottom: 20px;
     text-align: center;
+    color: #1a1a1a;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .Oferts {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    -webkit-box-orient: horizontal !important;
-    -webkit-box-direction: normal !important;
-    -ms-flex-direction: row !important;
-    flex-direction: row !important;
-    -ms-flex-wrap: nowrap !important;
-    flex-wrap: nowrap !important;
-    overflow-x: scroll;
+    display: flex;
+    overflow-x: auto;
     gap: 20px;
     width: 100%;
-    padding-bottom: 20px;
-} 
-
-.producto-card{
-    min-width: 300px !important;
-    width: 300px !important;
-    flex-shrink: 0 !important;
-    height: auto;
-    border: 1px solid #c00a0a;
-    border-radius: 8px;
-    padding: 15px;
-    position: relative !important;
-    float: none !important;
-    display: block !important;
-    background: rgb(193, 193, 193) !important;
+    padding: 20px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #2563eb #f1f1f1;
 }
 
-.producto-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.Oferts::-webkit-scrollbar {
+    height: 8px;
 }
 
-.producto-card h2 {
-    margin-bottom: 10px;
+.Oferts::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
 }
 
-.producto-card p {
-    margin-bottom: 5px;
+.Oferts::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 4px;
 }
-
-.producto-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: 10px;
-}
-
-.producto-card .precio {
-    font-weight: bold;
-    color: #000000;
-}
-
-.producto-card .categoria {
-    color: #000000;
-}
-

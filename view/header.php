@@ -1,19 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/web/css/common.css">
-    <style>
+<style>
         /* Header-specific styles */
+        .main-header {
+            background-color: #1A202C;
+            height: 70px !important;
+            min-height: 70px !important;
+            max-height: 70px !important;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 1000;
+        }
+
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0 2rem;
+            width: 100%;
+            height: 70px;
             position: relative;
+        }
+
+        .header-title {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 0;
+            padding: 0;
         }
 
         .header-title a {
@@ -22,12 +39,20 @@
             color: #fff;
             text-decoration: none;
             letter-spacing: 1px;
+            line-height: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
         }
 
         .header-nav {
             display: flex;
             align-items: center;
             gap: 2rem;
+            height: 100%;
         }
 
         .header-nav a {
@@ -201,9 +226,7 @@
                 width: 100%;
             }
         }
-    </style>
-</head>
-<body>
+</style>
 <div class="main-header">
     <div class="header-content">
         <h2 class="header-title">
@@ -255,5 +278,3 @@
     </nav>
     </div>
 </div>
-</body>
-</html>

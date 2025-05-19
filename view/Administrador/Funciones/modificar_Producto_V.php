@@ -75,9 +75,48 @@ require_once __DIR__ . '/../../../model/conection_BD.php';
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     }
+
+    .page-container {
+        position: relative;
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .btn-back {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        z-index: 1000;
+    }
+
+    .btn-back:hover {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-back svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
     </style>
 </head>
 <body>
+<div class="page-container">
 <?php
 // Obtener el ID del producto de la URL
 $id_producto = isset($_GET['id']) ? $_GET['id'] : null;
@@ -161,6 +200,13 @@ if (!$producto) {
 }
 </style>
 
+<a href="?action=PanelAdmin" class="btn-back">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </svg>
+    Volver
+</a>
+
 <div class="form-container">
     <h2 class="form-title">Modificar Producto</h2>
     
@@ -199,6 +245,7 @@ if (!$producto) {
         
         <button type="submit" class="btn-submit">Guardar Cambios</button>
     </form>
+</div>
 </div>
 <?php include __DIR__ . '/../../footer.php'; ?>
 </body>

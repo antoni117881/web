@@ -1,85 +1,90 @@
-<?php
-require_once __DIR__ . '/../../../model/Usuario_M.php';
-?>
-
-<style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Añadir Usuario</title>
+    <style>
 .form-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
+    max-width: 480px;
+    margin: 1.5rem auto;
+    padding: 20px 24px;
+    background: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.form-title {
-    color: #1a237e;
+h2 {
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: 500;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
 }
 
 .form-control {
     width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: border-color 0.3s;
+    padding: 10px 14px;
+    border: 1.8px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #444;
+    box-sizing: border-box;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    font-weight: 500;
+    background-color: #fafafa;
+    font-family: inherit;
 }
 
 .form-control:focus {
-    border-color: #1a237e;
+    border-color: #6366f1;
+    box-shadow: 0 0 6px rgba(99, 102, 241, 0.4);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(26,35,126,0.2);
+    background-color: #fff;
 }
 
 .btn-container {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .btn-guardar {
-    background: #4CAF50;
-    color: white;
+    display: block;
+    width: 100%;
+    padding: 11px 0;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
     cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+    font-family: inherit;
 }
 
-.btn-cancelar {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
+
 
 .btn-guardar:hover {
-    background: #45a049;
-}
-
-.btn-cancelar:hover {
-    background: #da190b;
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(79, 70, 229, 0.5);
 }
 
 .required {
@@ -91,11 +96,32 @@ require_once __DIR__ . '/../../../model/Usuario_M.php';
     color: red;
     display: none;
 }
-</style>
+    @media (max-width: 480px) {
+        .form-container {
+            padding: 16px 20px;
+            max-width: 95vw;
+        }
+        h2 {
+            font-size: 1.3rem;
+        }
+        .form-group label {
+            font-size: 0.85rem;
+        }
+        .form-control {
+            font-size: 0.9rem;
+        }
+        .btn-guardar,
+        .btn-cancelar {
+            font-size: 1rem;
+            padding: 10px 0;
+        }
+    }
+    </style>
+</head>
+<body>
 
 <div class="form-container">
-    <div class="form-container">
-    <h2 class="form-title">Añadir Nuevo Usuario</h2>
+    <h2>Añadir Nuevo Usuario</h2>
     
     <form id="addUserForm" method="POST">
         <div class="form-group">
@@ -150,30 +176,11 @@ require_once __DIR__ . '/../../../model/Usuario_M.php';
             <input type="text" name="response" class="form-control" maxlength="9" required>
         </div>
 
-        <div class="btn-container">
-            <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
-            <button type="submit" class="btn-guardar">Guardar Usuario</button>
-        </div>
+        <button type="submit" class="btn-guardar">Guardar Usuario</button>
     </form>
 </div>
 
 <script>
-function cancelar() {
-    // Usar POST para volver al panel de administración
-    var form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '?action=PanelAdmin';
-    
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'adminAction';
-    input.value = 'ver_usuarios';
-    
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
-}
-
 function validarContraseña(input) {
     const errorMessage = input.parentElement.querySelector('.error-message');
     if (input.value.length < 8 || input.value.length > 12) {
@@ -235,7 +242,7 @@ document.getElementById('addUserForm').addEventListener('submit', function(e) {
     .then(data => {
         if (data.success) {
             alert('Usuario añadido correctamente');
-            cancelar();
+            window.location.href = '?action=PanelAdmin';
         } else {
             alert('Error: ' + (data.message || 'No se pudo añadir el usuario'));
         }
@@ -246,3 +253,5 @@ document.getElementById('addUserForm').addEventListener('submit', function(e) {
     });
 });
 </script>
+</body>
+</html>

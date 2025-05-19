@@ -1,92 +1,133 @@
 <style>
-    * {
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        background-color: #f0f2f5;
-        padding: 0px;
-    }
-
     .container-cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
     }
 
     .producto-card {
-        background-color: #1e1e2f;
-        color: #f1f1f1;
-        width: 260px;
-        height: 460px;
-        border-radius: 15px;
+        background: #ffffff;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 450px;
+        width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 16px;
     }
 
     .producto-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     }
 
     .imagen-producto {
         width: 100%;
-        height: 180px;
+        height: 200px;
         object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 12px;
+        border-bottom: 1px solid #f1f1f1;
     }
 
     .detalles {
-        text-align: center;
-        flex-grow: 1;
+        padding: 16px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: 12px;
+        height: calc(100% - 200px);
     }
 
     .detalles h2 {
-        font-size: 16px;
-        margin-bottom: 8px;
-        color: #ffffff;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 4px;
+        line-height: 1.4;
     }
 
-    .descripcion,
-    .precio,
-    .categoria,
+    .descripcion {
+        font-size: 0.9rem;
+        color: #4b5563;
+        line-height: 1.5;
+        height: 54px;
+        overflow-y: auto;
+        padding-right: 4px;
+    }
+
+    .descripcion::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .descripcion::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+    .descripcion::-webkit-scrollbar-thumb {
+        background: #2563eb;
+        border-radius: 4px;
+    }
+
+    .precio {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    .categoria {
+        font-size: 0.875rem;
+        color: #6b7280;
+        background: #f3f4f6;
+        padding: 4px 12px;
+        border-radius: 20px;
+        display: inline-block;
+    }
+
     .id_producto {
-        font-size: 14px;
-        margin: 2px 0;
-        color: #cccccc;
+        font-size: 0.875rem;
+        color: #9ca3af;
     }
 
     .btn-Login,
     .btn-Agregar {
-        margin: 6px 4px 0;
+        width: 100%;
         padding: 10px;
-        font-size: 14px;
+        font-size: 0.9rem;
+        font-weight: 600;
         border: none;
-        border-radius: 8px;
-        background: linear-gradient(135deg, #00c6ff, #0072ff);
-        color: white;
+        border-radius: 6px;
+        text-align: center;
         cursor: pointer;
-        transition: background 0.3s ease;
+        transition: all 0.3s ease;
         text-decoration: none;
-        display: inline-block;
+        display: block;
+        margin-top: 4px;
     }
 
-    .btn-Login:hover,
+    .btn-Login {
+        background: #f8fafc;
+        color: #2563eb;
+        border: 2px solid #2563eb;
+    }
+
+    .btn-Agregar {
+        background: #2563eb;
+        color: white;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-Login:hover {
+        background: #2563eb;
+        color: white;
+    }
+
     .btn-Agregar:hover {
-        background: linear-gradient(135deg, #0072ff, #00c6ff);
+        background: #1d4ed8;
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+        transform: translateY(-2px);
     }
 </style>
 
@@ -99,14 +140,13 @@
                     foreach ($productos as $producto) {
                         ?>
                             <div class="producto-card">
+                                    <img class="imagen-producto" src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
                                 <div class="detalles"> 
                                     <h2><?php echo $producto['nombre']; ?></h2>
-                                    <img  class="imagen-producto" src="<?php echo $producto['imagen']; ?>" >
                                     <p class="descripcion"><?php echo $producto['descripcion']; ?></p>
-                                    <p class="precio">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
-                                    <p class="categoria">Categoría: <?php echo $producto['categoria']; ?></p>
-                                    <p class="id_producto">Id Producto: <?php echo $producto['id_producto']; ?></p>
-                                    <a href="?action=Producto&id=<?php echo $producto['id_producto']; ?>" class="btn-Login">Ir a Producto : <?php echo $producto['id_producto']; ?></a>
+                                    <p class="categoria"><?php echo $producto['categoria']; ?></p>
+                                    <p class="precio">$<?php echo number_format($producto['precio'], 2); ?></p>
+                                    <a href="?action=Producto&id=<?php echo $producto['id_producto']; ?>" class="btn-Login">Ver detalles</a>
                                     <button onclick="addToCart(<?php echo $producto['id_producto']; ?>)" class="btn-Agregar">Agregar a la Cesta</button>
                                 </div>                        
                             </div>
@@ -135,11 +175,3 @@ function addToCart(productId) {
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
-<style>
-   
-   
-    .detalles{
-        margin:20px;
-    }
-</style>
-   

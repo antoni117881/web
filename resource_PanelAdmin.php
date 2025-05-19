@@ -13,6 +13,17 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Asegurarse de que el header tenga altura fija */
+        .main-header {
+            flex: 0 0 70px !important;
+            height: 70px !important;
+            min-height: 70px !important;
+            max-height: 70px !important;
+            position: relative;
+            z-index: 1000;
         }
 
         .main-header {

@@ -154,10 +154,6 @@
             ?>
            
             </div>
-           <?php
-            include __DIR__."/view/footer.php"; 
-            ?>
-        
             </div>
         </div>
         <?php include __DIR__. "/view/footer.php"; ?>
