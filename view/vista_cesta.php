@@ -17,96 +17,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 }
 ?>
 <!DOCTYPE html>
-<html>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f6fa;
-        margin: 0;
-        padding: 20px;
-    }
-
-    h1 {
-        text-align: center;
-        color: #2c3e50;
-        margin-bottom: 30px;
-    }
-
-    #cart-list {
-        list-style: none;
-        padding: 0;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    #cart-list li {
-        background-color: #ffffff;
-        padding: 15px 20px;
-        margin-bottom: 12px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .btn-Agregar {
-        background-color: #e74c3c;
-        color: #fff;
-        border: none;
-        padding: 8px 14px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-
-    .btn-Agregar:hover {
-        background-color: #c0392b;
-    }
-
-    p {
-        text-align: center;
-        margin-top: 30px;
-        font-size: 16px;
-    }
-
-    a {
-        color: #2980b9;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-</style>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cesta de Compras</title>
-    <script>
-    // La función removeProduct de JavaScript debería hacer una llamada AJAX
-    // similar a addToCart para una mejor UX, en lugar de un envío de formulario.
-    // Pero si se mantiene el envío de formulario, el PHP de arriba lo manejaría.
-    // Por ahora, voy a modificar el botón para que envíe un formulario POST simple.
-    function submitRemoveForm(productId) {
-        const form = document.getElementById('remove-form-' + productId);
-        if (form) {
-            form.submit();
+    <link rel="stylesheet" href="/web/css/common.css">
+    <style>
+        #cart-list {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
         }
-    }
-    </script>
+
+        #cart-list li {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .btn-Agregar {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-Agregar:hover {
+            background-color: #c0392b;
+        }
+    </style>
 </head>
-<header>
-<?php include __DIR__ . "./header.php"; ?>
-</header>
 <body>
-    <?php
-    // Asumo que header.php existe en el mismo directorio que esta vista
-    // o ajusta la ruta.
-    // include __DIR__. "/header.php";
-    echo "<!-- Incluyendo header (simulado) -->";
-    ?>
-    <h1>Cesta de Compras</h1>
+<?php include __DIR__ . "/header.php"; ?>
+    <div class="container">
+        <h1>Cesta de Compras</h1>
     <ul id="cart-list">
         <?php if (!empty($cartItems)): ?>
             <?php foreach ($cartItems as $productId): ?>
@@ -146,5 +101,7 @@ function removeFromCart(productId) {
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
+    </div>
+    <?php include __DIR__. "/footer.php"; ?>
 </body>
 </html>

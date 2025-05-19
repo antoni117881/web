@@ -76,7 +76,7 @@ require_once __DIR__ . '/../../../controller/producto/listarProductos.php';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    padding: 20px;
+  
     max-width: 100%;
     margin: 0 auto;
 }

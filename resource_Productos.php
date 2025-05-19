@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Productos</title>
-        <link rel="stylesheet" href="StylesResource.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-
-        <div class="header">
-            <?php
-            include __DIR__. "/view/header.php";
-            ?>
-        </div>
-        <div class="Container-Menu"> 
-            <h1>NUESTROS PRODUCTOS</h1>
-            <div class="Oferts" style="display: flex !important; flex-direction: row !important; overflow-x: auto;"> 
-           
-            </div>   
-        </div>
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/web/css/common.css">
+    <style>
+        .Oferts {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <?php include __DIR__. "/view/header.php"; ?>
+    <div class="Container-Menu"> 
+        <h1>NUESTROS PRODUCTOS</h1>
+        <div class="Oferts"> 
+       
+        </div>   
+    </div>
+    <?php include __DIR__. "/view/footer.php"; ?>
+</body>
 </html>

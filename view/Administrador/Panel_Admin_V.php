@@ -4,7 +4,7 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
 ?>
 
 <div>
-    <div class="Container_Panel">
+    <div class="">
         <h1>Panel de Administrador</h1>
         
         <!-- Sección de Productos -->
@@ -90,7 +90,7 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
 
 .botones-admin {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* dos columnas iguales */
+    grid-template-columns: repeat(1, 1fr); /* dos columnas iguales */
     gap: 12px;
     overflow-y: auto;
     padding-right: 4px;

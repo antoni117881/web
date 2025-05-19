@@ -1,14 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web/css/common.css">
+    <style>
+        /* Header-specific styles */
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+        }
 
-<div class="header">
-    <h2 class="site-title">
-        <a href="?action=Home">Super Suela</a>
-    </h2>
-    <nav class="nav-links">
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-nav a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #2D3748;
+            color: #F7FAFC;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-nav a:hover {
+            background-color: #4A5568;
+            transform: translateY(-1px);
+        }
+
+        .header-nav .btn-registro {
+            background-color: #3182CE;
+        }
+
+        .header-nav .btn-registro:hover {
+            background-color: #2B6CB0;
+        }
+
+        .header-nav .welcome-message,
+        .header-nav .admin-message {
+            color: #A0AEC0;
+            font-size: 0.9rem;
+            margin: 0;
+            padding: 0.5rem 0;
+        }
+
+        .header-nav .admin-message {
+            color: #F56565;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .header-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-header">
+    <div class="header-content">
+        <h2 class="header-title">
+            <a href="?action=Home">Super Suela</a>
+        </h2>
+        <nav class="header-nav">
         <?php 
         $sesion_Start = $_SESSION["SesionStart"] ?? null;
         
         if (!isset($_SESSION['rol']) && $sesion_Start === null) {
-            
             $sesion_Start = false;
         } else {
             $sesion_Start = true;
@@ -34,73 +109,7 @@
 
         <?php } ?>
     </nav>
+    </div>
 </div>
-
-<style>
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 2rem;
-        background-color: #1A202C;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .site-title {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #F7FAFC;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-    }
-
-    .nav-links a {
-        text-decoration: none;
-        background-color: #2B6CB0;
-        color: rgb(255, 255, 255);
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: background-color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-        background-color:rgb(135, 185, 239);
-        color: white;
-    }
-
-    .btn-registro {
-        background-color: #38B2AC;
-        color: white;
-        padding: 0.6rem 1.2rem;
-        border-radius: 8px;
-        font-weight: 600;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-registro:hover {
-        background-color: #319795;
-    }
-
-    .btn-link:hover {
-        background-color: transparent;
-        color: #3182CE;
-    }
-
-    .admin-message {
-        color: #F56565;
-        font-weight: 600;
-        font-size: 1rem;
-    }
-
-    .welcome-message {
-        font-weight: 600;
-        font-size: 1.1rem;
-        color: #F7FAFC;
-    }
-</style>
+</body>
+</html>

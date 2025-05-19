@@ -8,7 +8,7 @@
 
     body {
         background-color: #f0f2f5;
-        padding: 20px;
+        padding: 0px;
     }
 
     .container-cards {

@@ -1,6 +1,17 @@
 <?php
 require_once __DIR__ . '/../../../model/usuario_M.php';
 require_once __DIR__ . '/../../../model/conection_BD.php';
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Usuario</title>
+    <?php include __DIR__ . '/../../header.php'; ?>
+</head>
+<body>
+<?php
 
 if (isset($_GET['id'])) {
     $id_usuario = $_GET['id'];
@@ -147,3 +158,6 @@ if (isset($_GET['id'])) {
     background: #da190b;
 }
 </style>
+<?php include __DIR__ . '/../../footer.php'; ?>
+</body>
+</html>

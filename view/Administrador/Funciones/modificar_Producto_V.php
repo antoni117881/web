@@ -1,14 +1,86 @@
 <?php
 require_once __DIR__ . '/../../../model/Producto_M.php';
+require_once __DIR__ . '/../../../model/conection_BD.php';
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Producto</title>
+    <?php include __DIR__ . '/../../header.php'; ?>
+    <style>
+    .form-container {
+        max-width: 600px;
+        margin: 30px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
+    .form-title {
+        color: #1f2937;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        color: #4b5563;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+        border-color: #3b82f6;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .form-textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    </style>
+</head>
+<body>
+<?php
 // Obtener el ID del producto de la URL
 $id_producto = isset($_GET['id']) ? $_GET['id'] : null;
-
-// Si no hay ID, redirigir
-if (!$id_producto) {
-    header('Location: ?action=PanelAdmin');
-    exit;
-}
 
 // Obtener los datos del producto
 $productoModel = new ProductoModel();
@@ -128,3 +200,6 @@ if (!$producto) {
         <button type="submit" class="btn-submit">Guardar Cambios</button>
     </form>
 </div>
+<?php include __DIR__ . '/../../footer.php'; ?>
+</body>
+</html>
