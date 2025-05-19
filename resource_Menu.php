@@ -89,13 +89,13 @@
     <div class="carousel-container">
         <div class="carousel" id="myCarousel">
             <div class="carousel-slide">
-                <img src="https://revistadiners.com.co/wp-content/uploads/2019/05/nike_800x669.jpg" alt="Nike 1">
+                <img src="https://p.turbosquid.com/ts-thumb/e6/1wRyKa/FE/4/jpg/1637048474/1920x1080/fit_q87/359d2eb3ee25897dac3a071b20ecc80b747d661e/4.jpg" alt="Nike 1">
             </div>
             <div class="carousel-slide">
-                <img src="https://okdiario.com/look/img/2023/02/23/a559819c-b655-466b-9d02-6a7b0010f38f.jpg" alt="Nike 2">
+                <img src="https://motormania.com.mx/wp-content/uploads/2023/08/230802_PD_Sneaker_1920x1080px.jpg" alt="Nike 2">
             </div>
             <div class="carousel-slide">
-                <img src="https://media.revistagq.com/photos/5ea0065a8368a10008af32c2/1:1/w_1280%2cc_limit/zapatilla-running-nike.jpg" alt="Nike 3">
+                <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Nike 3">
             </div>
         </div>
         <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
