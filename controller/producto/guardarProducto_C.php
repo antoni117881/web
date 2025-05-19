@@ -1,25 +1,31 @@
-<?php 
+<?php
+header('Content-Type: application/json');
+require_once __DIR__ . '/../../model/Producto_M.php';
 
-    require_once __DIR__ . '/../../model/Producto_M.php';
-    require_once __DIR__ . '/../../model/conection_BD.php';
+error_log('Llegó al controlador guardarProducto_C.php');
 
-    $mensajeError = [];
-   
-        $_SESSION['productName'] = $_POST['productName'];
-        $_SESSION['productDescription'] = $_POST['productDescription'];
-        $_SESSION['productPrice'] = $_POST['productPrice']; 
-        $_SESSION['productStock'] = $_POST['productStock'];
-        $_SESSION['productImage'] = $_POST['productImage'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombre = $_POST['nombre'] ?? '';
+    $descripcion = $_POST['descripcion'] ?? '';
+    $precio = $_POST['precio'] ?? '';
+    $stock = $_POST['stock'] ?? '';
+    $categoria = $_POST['categoria'] ?? '';
 
-        $producto = new ProductoModel();
-        
-        $producto->guardarProducto($_SESSION['productName'], $_SESSION['productDescription'], $_SESSION['productPrice'], $_SESSION['productStock'], $_SESSION['productImage']);
-        if($producto){
-            echo "Producto guardado correctamente";
-            include __DIR__ . '/../../resource_Menu.php';
-        }else{
-            echo "Error al guardar el producto";
-        }
+    // Validación básica
+    if (empty($nombre) || empty($descripcion) || empty($precio) || empty($stock) || empty($categoria)) {
+        echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios']);
+        exit;
+    }
 
+    $producto = new ProductoModel();
+    $resultado = $producto->guardarProducto($nombre, $descripcion, $precio, $stock, $categoria);
 
-?>
+    if (is_numeric($resultado) && $resultado > 0) {
+        echo json_encode(['success' => true, 'message' => 'Producto guardado correctamente']);
+    } else {
+        // Aquí muestra el error exacto del PDO para ayudarte a debuggear
+        echo json_encode(['success' => false, 'message' => 'Error al guardar producto: ' . $resultado]);
+    }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+}

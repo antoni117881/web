@@ -50,6 +50,12 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
     case 'cesta':
         include __DIR__.'/view/vista_cesta.php';
          break;
+    case 'ModificarProducto':
+        include __DIR__.'/view/Administrador/Funciones/modificar_Producto_V.php';
+        break;
+    case 'ActualizarProducto':
+        include __DIR__.'/controller/producto/actualizar_producto.php';
+        break;
     case 'SaveProducts':
         include __DIR__.'/controller/producto/guardarProducto_C.php';
         break;
@@ -59,6 +65,14 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
         case 'borrarcarrito':
             include __DIR__.'/controller/borrarCesta.php';
             break;
+
+    // Usuarios
+    case 'ModificarUsuario':
+        include __DIR__.'/view/Administrador/Funciones/modificar_Usuario_V.php';
+        break;
+    case 'MostrarUsuarios':
+        include __DIR__.'/view/Administrador/Funciones/mostrar_Usuarios_V.php';
+        break;
 
     // View 
 

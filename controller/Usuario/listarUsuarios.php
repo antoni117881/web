@@ -1,17 +1,14 @@
 <?php
-    require_once __DIR__. '/../../model/usuario_M.php.php';
-    require_once __DIR__. '/../../model/conection_BD.php';
+require_once __DIR__ . '/../../model/conection_BD.php';
+require_once __DIR__ . '/../../model/usuario_M.php';
 
+// Obtener la conexión
+$conection = DB::getInstance();
 
-    $conection = DB::getInstance();
+// Obtener los usuarios y guardarlos en una variable que estará disponible para la vista
+$usuarios = obtenerUsuarios($conection);
 
-    $usuarios = obtenerUsuarios($conection);
-
-    // $rutaMenu = __DIR__. '/../resource_Menu.php';
-    // if (file_exists($rutaMenu)) {
-    //     include $rutaMenu;
-    // } else {
-    //     die('Error: No se encuentra el archivo resource_Menu.php');
-    // }
-
-?>
+// Si no hay usuarios, inicializar como array vacío para evitar errores
+if (!$usuarios) {
+    $usuarios = [];
+}
