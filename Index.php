@@ -73,6 +73,9 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
     case 'MostrarUsuarios':
         include __DIR__.'/view/Administrador/Funciones/mostrar_Usuarios_V.php';
         break;
+    case 'Profile':
+        include __DIR__.'/resource_Profile.php';
+        break;
 
     // View 
 

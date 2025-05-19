@@ -34,7 +34,7 @@
         .Panel {
              /* Alineado con el header */
             bottom: 0; /* Se extiende hasta abajo */
-            width: 250px;
+            width: 280px;
             background-color:rgb(57, 64, 98);
             border-right: 1px solid #e1e1e1;
             overflow-y: auto; /* Scroll si el contenido es largo */
@@ -44,7 +44,7 @@
 
         /* Contenedor principal */
         .Container_Menu {
-            margin-left: 250px; /* Igual al ancho del panel */
+           /* Igual al ancho del panel */
             flex: 1;
             background-color: #FFFFFF;
             padding: 20px;

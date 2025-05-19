@@ -4,7 +4,7 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
 ?>
 
 <div>
-    <div class="">
+    <div class="ContainerPanel">
         <h1>Panel de Administrador</h1>
         
         <!-- Sección de Productos -->
@@ -42,30 +42,14 @@ $adminAction = isset($_POST['adminAction']) ? $_POST['adminAction'] : 'ver_produ
 </div>
 
 <style>
-.Container_Panel {
-    background: linear-gradient(135deg, #f5f7fa, #e0eafc);
-    width: 320px;
-    max-width: 90vw;
-    min-height: 400px;
-    padding: 24px 28px;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    color: #333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: all 0.3s ease;
+.ContainerPanel{
+    // centrar todo sin flex ni grid
+   
 }
-
-.Container_Panel h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 18px;
-    color: #1a1a1a;
-    border-bottom: 3px solid #4f46e5;
-    padding-bottom: 10px;
-    letter-spacing: 0.5px;
+.ContainerPanel h1{
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .seccion-admin {

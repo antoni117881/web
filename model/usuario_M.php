@@ -125,11 +125,12 @@ function registrar(
 
 function login($conection, $nameAccount, $password) {
     try {
-        // Consulta para obtener la contraseña y el rol del usuario
-        $consult_dataUser = $conection->prepare("SELECT contraseña, rol FROM usuarios WHERE nombre_cuenta = ?");
+        // Consulta para obtener todos los datos del usuario
+        $consult_dataUser = $conection->prepare("SELECT * FROM usuarios WHERE nombre_cuenta = ?");
         $consult_dataUser->bindParam(1, $nameAccount, PDO::PARAM_STR);
         $consult_dataUser->execute();
-        $result = $consult_dataUser->fetch(PDO::FETCH_ASSOC); // Solo necesitamos una fila
+        $result = $consult_dataUser->fetch(PDO::FETCH_ASSOC);
+        
         // Si el usuario no existe
         if (!$result) {
             return false;
@@ -137,9 +138,15 @@ function login($conection, $nameAccount, $password) {
         
         // Verificar la contraseña
         if (password_verify($password, $result['contraseña'])) {
-            $_SESSION["rol"] = $result['rol']; // Asigna el rol a la sesión
-            echo "<script>alert('Bienvenido, tu rol es: " . $result['rol'] . "');</script>";
-            return $result['rol'];         // Retorna el rol
+            // Guardar datos en la sesión
+            $_SESSION['nameAccount'] = $result['nombre_cuenta'];
+            $_SESSION['rol'] = $result['rol'];
+            $_SESSION['email'] = $result['email'];
+            $_SESSION['nombre'] = $result['nombre'];
+            $_SESSION['apellido'] = $result['apellido'];
+            $_SESSION['id'] = $result['id'];
+            
+            return $result['rol'];
         } else {
             return false;
         }
