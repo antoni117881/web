@@ -15,13 +15,11 @@
     );
 
     if($conection_ok) {
-        $_SESSION["nameAccount"] = $_POST["nameAccount"];
-        include __DIR__. '/../../resource_Menu.php';
-        
-       $sesion_ok = true;
-       $_SESSION["SesionStart"] = true;
-
-    }else {
+        $sesion_ok = true;
+        $_SESSION["SesionStart"] = true;
+        header("Location: index.php?action=Home");
+        exit();
+    } else {
         echo $conection_ok;
         $error = "Usuari o contrasenya incorrectes";
         echo "<script>alert('error en Controller/Autentificacion/loginSESSION')</script>";

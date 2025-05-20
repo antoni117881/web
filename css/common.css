@@ -1,0 +1,152 @@
+/* Reset and common styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f8fafc;
+    position: relative;
+}
+
+#main-content {
+    flex: 1;
+    width: 100%;
+    padding-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Override any Bootstrap font styles */
+.main-header *,
+.header-content *,
+.header-title *,
+.header-nav * {
+    font-family: Arial, sans-serif !important;
+}
+
+/* Ensure header is always at the top */
+.main-header {
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+    background-color: #1A202C;
+}
+
+/* Container styles */
+.container, 
+.container-fluid,
+.Container-Menu {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Text styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif !important;
+    color: #F7FAFC;
+}
+
+/* Ensure consistent link styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Footer Styles */
+.main-footer {
+    background-color: #333;
+    color: #f0f0f0;
+    padding: 20px 15px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1 1 250px;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.footer-section p,
+.footer-section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.5;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-section a:hover {
+    color: #1e90ff;
+}
+
+.main-footer hr {
+    border: none;
+    border-top: 1px solid #555;
+    margin: 20px 0 10px;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 13px;
+    color: #bbb;
+}
+
+.social-links a {
+    margin-right: 12px;
+    color: #f0f0f0;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #1e90ff;
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .footer-section {
+        min-width: auto;
+    }
+}

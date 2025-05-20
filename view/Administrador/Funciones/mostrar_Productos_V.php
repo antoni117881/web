@@ -2,8 +2,23 @@
 require_once __DIR__ . '/../../../controller/producto/listarProductos.php';
 ?>
 
+<div class="page-title">
+    <h1>Gestión de Productos</h1>
+</div>
 
 <style>
+.page-title {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.page-title h1 {
+    color: #1a237e;
+    font-size: 2em;
+    margin: 0;
+    font-weight: 600;
+}
 /* Estilos del modal */
 .modal {
     display: none;
@@ -76,7 +91,7 @@ require_once __DIR__ . '/../../../controller/producto/listarProductos.php';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    padding: 20px;
+  
     max-width: 100%;
     margin: 0 auto;
 }
