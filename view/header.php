@@ -245,6 +245,7 @@
         if ($sesion_Start === false) { ?>
             <a href="?action=Registro" class="btn-registro">Registrarse</a>
             <a href="?action=LoginUser" class="btn-link">Login</a>
+            <a href="?action=ProductosPag" class="btn-link">Productos</a>
             <a href="?action=cesta" class="btn-link">Ver Cesta</a>
         <?php } else { ?>
             <div class="profile-dropdown">
