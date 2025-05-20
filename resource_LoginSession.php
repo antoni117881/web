@@ -1,33 +1,10 @@
 <!DOCTYPE html>
-<html lang="ca">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Login Session</title>
+    <link rel="stylesheet" href="css/common.css">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(90deg, rgb(82, 78, 215), rgb(71, 114, 232), #86a8e7);
-            animation: moveGradient 5s ease-in-out infinite alternate;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-            padding: 40px 20px;
-        }
-
         .container-login {
             background-color: #ffffff;
             border-radius: 15px;
@@ -35,6 +12,7 @@
             padding: 30px;
             width: 100%;
             max-width: 420px;
+            margin: 40px auto;
         }
 
         .form-login {
@@ -98,33 +76,15 @@
         .form-links a:hover {
             text-decoration: underline;
         }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #fff;
-        }
-
-        @keyframes moveGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 100% 50%;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <div>
-        <?php include __DIR__ . "/view/header.php"; ?>
-    </div>
-
-    <div class="container">
+    <?php include __DIR__ . "/view/header.php"; ?>
+    
+    <div id="main-content">
         <div class="container-login">
-            <form action="?action=LoginController" method="post" class="form-login">
+                <form action="?action=LoginController" method="post" class="form-login">
                 <h1>Iniciar Sesión</h1>
 
                 <label for="nameAccount">Usuario</label>
@@ -143,9 +103,7 @@
         </div>
     </div>
 
-    <footer>
-        Footer
-    </footer>
+    <?php include __DIR__ . "/view/footer.php"; ?>
 </body>
 
 </html>
