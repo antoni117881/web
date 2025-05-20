@@ -1,25 +1,13 @@
-<html>
-    
-    <body>
-    <div>
-        <h1> Reinciar Contraseña</h1>
-        <div>
-            <form action="?action=NewPassword">
-            <label for="phone">Número móvil:</label>
-            <input type="text" id="phone" name="phone" maxlength="9" placeholder="Número Móvil">
-            </br></br>
-            <label for="phone">Número móvil:</label>
-            <input type="text" id="phone" name="phone" maxlength="9" placeholder="Número Móvil">
-            </br></br>
-            <input type="submit"  value="Aplicar">
+<h2>Restablecer contraseña</h2>
+<form method="POST" action="?action=Resetcontraseña">
+    <label for="email">Correo electrónico:</label>
+    <input type="email" name="email" required><br>
 
-            </form>
+    <label for="newPassword">Nueva contraseña:</label>
+    <input type="password" name="newPassword" required><br>
 
+    <label for="confirmPassword">Confirmar contraseña:</label>
+    <input type="password" name="confirmPassword" required><br>
 
-        </div>
-
-    </div>
-    </body>
-
-    
-</html>
+    <button type="submit">Restablecer contraseña</button>
+</form>

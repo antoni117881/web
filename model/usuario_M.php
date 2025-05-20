@@ -158,10 +158,46 @@ function obtenerUsuarios($conection) {
     return $consulta_usuarios->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function ReinciarContraseña(
-   
-    ){
+function reiniciarContraseña($conexion, $email, $nuevaContraseña) {
+    // Verificar que el correo existe
+    $stmtSelect = $conexion->prepare("SELECT id_usuario FROM usuarios WHERE LOWER(email) = LOWER(:email)");
+    $stmtSelect->execute([':email' => $email]);
+
+    if ($stmtSelect->rowCount() > 0) {
+        // echo "Usuario encontrado"; // Puedes quitar esto para producción
+    } else {
+        // echo "Usuario NO encontrado: " . htmlspecialchars($email); // Puedes quitar esto
+        return false; // Usuario no existe
     }
+    // Es buena práctica cerrar el cursor si ya no necesitas el statement,
+    // especialmente antes de preparar otro en la misma conexión si no reusas la variable $stmt.
+    $stmtSelect->closeCursor();
+
+    // Actualizar la contraseña con hash
+    $hash = password_hash($nuevaContraseña, PASSWORD_DEFAULT);
+    echo $hash;
+    echo $nuevaContraseña;
+    echo $email;
+    // Usamos LOWER() en el WHERE para consistencia con la búsqueda y pasamos parámetros a execute()
+    $stmtUpdate = $conexion->prepare("UPDATE usuarios SET contraseña = :contrasena_param WHERE email = :email_param");
+
+    // Pasar parámetros como un array a execute()
+    // Asegúrate de que los nombres de los placeholders aquí coincidan con los de prepare()
+    try {
+        $success = $stmtUpdate->execute([
+            ':contrasena_param' => $hash,
+            ':email_param' => $email
+        ]);
+        $stmtUpdate->closeCursor(); // Cerrar cursor después de la ejecución
+        return $success;
+    } catch (PDOException $e) {
+        // Loguear el error o manejarlo apropiadamente
+        error_log("Error al actualizar contraseña: " . $e->getMessage());
+        return false;
+    }
+}
+
+    
 
 
 ?>

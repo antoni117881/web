@@ -35,6 +35,9 @@ switch ($action) { //aquí solo apuntamos a controladores y resource no a modulo
     case 'RegistreSave':
             include __DIR__.'/controller/Autentificacion/save_registre.php';
             break;
+     case 'Resetcontraseña':
+            include __DIR__.'/controller/Autentificacion/contrseñaNueva.php';
+             break;
     case 'ResetPasword':
             include __DIR__.'/controller/reset_password.php';
             break;

@@ -3,7 +3,7 @@
     require_once __DIR__. '/../../model/usuario_M.php';
     
     $sesion_ok = false;
-    $conection = DB::getInstance();
+   $conection = DB::getInstance(); 
     
     if(empty($_POST['nameAccount'])||empty($_POST['password']) ){
         $sesion_ok = false;
