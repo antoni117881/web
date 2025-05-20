@@ -20,17 +20,14 @@ if (!$producto) {
 <html>
 <head>
     <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="StylesResource.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #f2f2f2;
-            color: #333;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        .producto-detalle-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
         .main-container {
@@ -165,9 +162,10 @@ if (!$producto) {
     </style>
 </head>
 <body>
-<div class="main-container">
-    <?php include __DIR__. "/view/header.php"; ?>
-    <div class="producto-detalle">
+<?php include __DIR__. "/view/header.php"; ?>
+<div id="main-content">
+    <div class="producto-detalle-container">
+        <div class="producto-detalle">
         <div class="producto-imagen-container">
             <img class="producto-imagen" src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
         </div>
@@ -182,8 +180,9 @@ if (!$producto) {
             <button class="btn-agregar" onclick="addToCart(<?php echo $producto['id_producto']; ?>)">Agregar al Carrito</button>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         function addToCart(productId) {
             $.ajax({
@@ -200,7 +199,7 @@ if (!$producto) {
         }
     </script>
 
-    <?php include __DIR__ . "/view/footer.php"; ?>
 </div>
+<?php include __DIR__ . "/view/footer.php"; ?>
 </body>
 </html>
