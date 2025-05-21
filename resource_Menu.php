@@ -142,16 +142,10 @@
     </script>
         <div class="Container-Menu"> 
             <div >
-                <h2>Nuestros Productos  </h2>
+                <h2>Nuestros Productos Destacados   </h2>
                <?php include __DIR__."/view/Productos/card_productos.php"; 
                ?>
             </div>  
-            <h1>Productos en Oferta</h1>
-            
-            <div class="Oferts" > 
-            <?php 
-            include __DIR__."/view/Productos/card_productos.php"; 
-            ?>
            
             </div>
             </div>
